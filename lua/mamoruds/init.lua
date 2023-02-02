@@ -18,6 +18,5 @@ vim.opt.termguicolors = true
 {{#if (eq 0 1)}}
 require("mamoruds.colors")
 {{/if}}
+require("mamoruds.providers")
 require("mamoruds.plugins")
-require("mamoruds.plugin_config")
-
