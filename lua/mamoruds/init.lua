@@ -15,8 +15,7 @@ vim.opt.smartcase = true
 
 vim.opt.termguicolors = true
 
-{{#if (eq 0 1)}}
-require("mamoruds.colors")
-{{/if}}
 require("mamoruds.providers")
 require("mamoruds.plugins")
+
+vim.api.nvim_command('set ft=conf')
