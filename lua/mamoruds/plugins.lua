@@ -2,6 +2,13 @@ require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
 
     use {
+        'rcarriga/nvim-notify',
+        config = function()
+            require('mamoruds.plugins.nvim-notify')
+        end,
+    }
+
+    use {
         'projekt0n/github-nvim-theme',
         config = function()
             require('mamoruds.plugins.github-theme')
