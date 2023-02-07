@@ -2,6 +2,13 @@ require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
 
     use {
+        'numToStr/Comment.nvim',
+        config = function()
+            require('mamoruds.plugins.comment')
+        end
+    }
+
+    use {
         'rcarriga/nvim-notify',
         config = function()
             require('mamoruds.plugins.nvim-notify')
@@ -42,8 +49,6 @@ require('packer').startup(function(use)
     {{/if}}
 
     use 'preservim/nerdtree'
-
-    use 'preservim/nerdcommenter'
 
     use 'gabrielelana/vim-markdown'
 
