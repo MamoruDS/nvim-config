@@ -1,23 +1,32 @@
-vim.cmd [[packadd packer.nvim]]
-
-return require('packer').startup(function(use)
+require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
 
     -- https://github.com/projekt0n/github-nvim-theme
-    use({
+    use {
         'projekt0n/github-nvim-theme',
-        config = function() require('github-theme').setup({}) end
-    })
+        config = function()
+            require('mamoruds.plugins.github-theme')
+        end
+    }
 
-    -- https://github.com/airblade/vim-gitgutter
-    use 'airblade/vim-gitgutter'
+    -- https://github.com/lewis6991/gitsigns.nvim
+    use {
+        'lewis6991/gitsigns.nvim',
+        event = 'BufRead',
+        config = function()
+            require('mamoruds.plugins.gitsigns')
+        end,
+    }
 
     -- https://github.com/itchyny/lightline.vim
     use 'itchyny/lightline.vim'
     {{#if nvim_node_host_prog}}
 
     -- https://github.com/neoclide/coc.nvim
-    use({'neoclide/coc.nvim', branch = 'release'})
+    use {
+        'neoclide/coc.nvim',
+        branch = 'release'
+    }
     {{/if}}
 
     -- https://github.com/preservim/nerdtree
@@ -41,11 +50,21 @@ return require('packer').startup(function(use)
     {{#if nvim_python3_host_prog}}
 
     -- https://github.com/numirias/semshi
-    use {'numirias/semshi', run = ':UpdateRemotePlugins', ft = 'python'}
+    use {
+        'numirias/semshi',
+        run = ':UpdateRemotePlugins',
+        ft = 'python'
+    }
     {{/if}}
 
     -- https://github.com/ojroques/vim-oscyank
-    use {'ojroques/vim-oscyank', branch = 'main'}
+    use {
+        'ojroques/vim-oscyank',
+        branch = 'main',
+        config = function()
+            require('mamoruds.plugins.oscyank')
+        end
+    }
     {{#if nvim_plugin_copilot_node_host}}     
 
     -- https://github.com/github/copilot.vim
