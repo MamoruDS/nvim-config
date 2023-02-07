@@ -8,6 +8,15 @@ require('packer').startup(function(use)
             require('mamoruds.plugins.github-theme')
         end
     }
+    
+    -- https://github.com/nvim-lualine/lualine.nvim
+    use{
+        'nvim-lualine/lualine.nvim',
+        event = 'BufEnter',
+        config = function()
+            require('mamoruds.plugins.lualine')
+        end,
+    }
 
     -- https://github.com/lewis6991/gitsigns.nvim
     use {
@@ -17,10 +26,7 @@ require('packer').startup(function(use)
             require('mamoruds.plugins.gitsigns')
         end,
     }
-
-    -- https://github.com/itchyny/lightline.vim
-    use 'itchyny/lightline.vim'
-    {{#if nvim_node_host_prog}}
+    -- {{#if nvim_node_host_prog}}
 
     -- https://github.com/neoclide/coc.nvim
     use {
