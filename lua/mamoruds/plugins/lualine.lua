@@ -4,6 +4,7 @@ ref_theme.normal.c.bg = nil
 ref_theme.insert.c.bg = nil
 ref_theme.visual.c.bg = nil
 ref_theme.replace.c.bg = nil
+ref_theme.command.c.bg = nil
 ref_theme.inactive.c.bg = nil
 
 -- default
@@ -17,27 +18,24 @@ ref_theme.inactive.c.bg = nil
 require('lualine').setup {
     options = {
         theme = ref_theme,
-        component_separators = {'', ''},
-        section_separators = {'', ''}
+        component_separators = { '', '' },
+        section_separators = { '', '' },
     },
     sections = {
         lualine_a = {},
         lualine_b = {
-            {'branch', icon = ''},
+            'filename',
             -- 'diff',
-            'diagnotics',
+        },
+        lualine_c = {
+            { 'branch', icon = '' },
+            { 'diagnostics', sources = { "coc" } },
         },
         lualine_x = {
-            'encoding', {
-                'fileformat',
-                symbols = {
-                    unix = 'LF',
-                    dos = 'CRLF',
-                    mac = 'CR'
-                }
-            }, 'filetype'
+            'encoding',
+            { 'fileformat', symbols = { unix = 'LF', dos = 'CRLF', mac = 'CR' } },
         },
-        lualine_y = {'location'},
-        lualine_z = {}
-    }
+        lualine_y = { 'filetype', 'g:coc_status' },
+        lualine_z = { 'location' },
+    },
 }
