@@ -69,7 +69,7 @@ keyset("n", "K", '<CMD>lua _G.show_docs()<CR>', { silent = true })
 ---@diagnostic disable-next-line: redefined-local
 local opts = { silent = true, nowait = true }
 -- Show all diagnostics
-keyset("n", "<space>m", ":<C-u>CocList diagnostics<cr>", opts)
-keyset("n", "<space>x", ":<C-u>CocList extensions<cr>", opts)
-keyset("n", "<space>p", ":<C-u>CocList commands<cr>", opts)
-keyset("n", "<space>f", ":<C-u>CocList files<cr>", opts)
+keyset("n", "<leader>m", ":<C-u>CocList diagnostics<cr>", opts)
+keyset("n", "<leader>x", ":<C-u>CocList extensions<cr>", opts)
+keyset("n", "<leader>p", ":<C-u>CocList commands<cr>", opts)
+keyset("n", "<leader>f", ":<C-u>CocList files<cr>", opts)
