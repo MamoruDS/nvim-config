@@ -7,6 +7,11 @@ vim.g.coc_global_extensions = {
     'coc-vimlsp',
     'coc-yaml',
 }
+{{#if nvim_coc_config_home}}
+
+-- default coc-settings.json under `~/.config/nvim` will handled by dotter
+vim.g.coc_config_home = "{{nvim_coc_config_home}}"
+{{/if}}
 
 -- TODO: for dark only
 vim.cmd([[
