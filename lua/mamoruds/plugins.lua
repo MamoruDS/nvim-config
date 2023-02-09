@@ -37,8 +37,19 @@ require('packer').startup(function(use)
             require('mamoruds.plugins.gitsigns')
         end,
     }
-    {{#if nvim_node_host_prog}}
 
+    {{#if (eq use_nerdfont 1)}}
+    use 'nvim-tree/nvim-web-devicons'
+
+    {{/if}}
+    use {
+        'nvim-tree/nvim-tree.lua',
+        config = function()
+            require('mamoruds.plugins.nvim-tree')
+        end,
+    }
+
+    {{#if nvim_node_host_prog}}
     use {
         'neoclide/coc.nvim',
         branch = 'release',
@@ -46,14 +57,9 @@ require('packer').startup(function(use)
             require('mamoruds.plugins.coc')
         end,
     }
+
     {{/if}}
-
-    use 'preservim/nerdtree'
-
     use 'gabrielelana/vim-markdown'
-
-    use 'nvim-tree/nvim-web-devicons' -- optional, for file icons
-    use 'nvim-tree/nvim-tree.lua'
 
     use 'neoclide/jsonc.vim'
 
