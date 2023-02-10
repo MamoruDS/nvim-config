@@ -82,4 +82,17 @@ require('packer').startup {
         use 'github/copilot.vim'
         {{/if}}
     end,
+    config = {
+        display = {
+            open_fn = function()
+                return require('packer.util').float {
+                    border = 'single',
+                    anchor = 'NE',
+                    row = 1,
+                    col = vim.o.columns - 1,
+                    width = 50,
+                }
+            end
+        }
+    },
 }
