@@ -14,10 +14,10 @@ vim.g.coc_config_home = "{{nvim_coc_config_home}}"
 {{/if}}
 
 -- TODO: for dark only
-vim.cmd([[
+vim.cmd [[
     hi CocFloating              guibg=#0d1117
     hi CocNotificationProgress  guifg=#58a6ff
-]])
+]]
 
 local keyset = vim.keymap.set
 -- Autocomplete

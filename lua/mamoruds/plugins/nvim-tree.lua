@@ -7,7 +7,7 @@ keyset('n', '<C-b>', vim.cmd.NvimTreeToggle)
 keyset('n', '<leader>tt', ':NvimTreeToggle<CR>')
 
 if vim.opt.background:get() == 'dark' then
-    vim.cmd[[
+    vim.cmd [[
         hi NvimTreeFolderIcon   guifg=#90a4ae
         "
         hi NvimTreeNormal           guifg=#adbac7
@@ -15,9 +15,9 @@ if vim.opt.background:get() == 'dark' then
         hi NvimTreeOpenedFolderName guifg=#adbac7
         hi NvimTreeGitIgnored       guifg=#535b63
         hi link NvimTreeEmptyFolderName NvimTreeGitIgnored
-        ]]
+    ]]
 else
-    vim.com[[
+    vim.com [[
         hi NvimTreeFolderIcon   guifg=#90a4ae
         "
         hi NvimTreeGitIgnored       guifg=#b1bac4
@@ -30,10 +30,9 @@ require("nvim-tree").setup {
     view = {
         float = {
             enable = true,
-            -- open_win_config = {
-            --     anchor = 'NE',
-            --     border = 'rounded',
-            -- },
+            open_win_config = {
+                border = 'single',
+            },
         },
     },
     git = {
