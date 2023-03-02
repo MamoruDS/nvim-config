@@ -17,7 +17,7 @@ vim.g.coc_config_home = "{{nvim_coc_config_home}}"
 vim.cmd [[
     hi CocFloating              guibg=#0d1117
     hi CocNotificationProgress  guifg=#58a6ff
-    hi CocInlayHint             guifg=#8b949e
+    hi CocInlayHint             guifg=#ffa8cc gui=italic
 ]]
 
 local keyset = vim.keymap.set
