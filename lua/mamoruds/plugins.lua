@@ -50,16 +50,17 @@ require('packer').startup {
             end,
         }
 
-        {{#if nvim_node_host_prog}}
         use {
             'neoclide/coc.nvim',
             branch = 'release',
+            cond = function()
+                return (vim.fn.executable('node') == 1) or (vim.fn.empty(vim.g.node_host_prog) == 0)
+            end,
             config = function()
                 require('mamoruds.plugins.coc')
             end,
         }
 
-        {{/if}}
         use 'gabrielelana/vim-markdown'
 
         use 'neoclide/jsonc.vim'
@@ -77,10 +78,13 @@ require('packer').startup {
                 require('mamoruds.plugins.oscyank')
             end,
         }
-        {{#if nvim_plugin_copilot_node_host}}     
 
-        use 'github/copilot.vim'
-        {{/if}}
+        use {
+            'github/copilot.vim',
+            cond = function()
+                return (vim.fn.executable('node') == 1) or (vim.fn.empty(vim.g.copilot_node_command) == 0)
+            end,
+        }
     end,
     config = {
         display = {
