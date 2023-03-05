@@ -5,7 +5,7 @@ if vim.fn.expand('%:p'):find('^/var/tmp') then
     if fname ~= nil then
         local ft = vim.filetype.match({ filename = fname })
         if ft ~= nil then
-            vim.api.nvim_command('set ft=' .. ft)
+            vim.cmd('set ft=' .. ft)
         end
     end
 
@@ -13,7 +13,7 @@ if vim.fn.expand('%:p'):find('^/var/tmp') then
     if base ~= nil and ext ~= nil then
         local ft = vim.filetype.match({ filename = base .. '.' .. ext })
         if ft ~= nil then
-            vim.api.nvim_command('set ft=' .. ft)
+            vim.cmd('set ft=' .. ft)
         end
     end
 end
