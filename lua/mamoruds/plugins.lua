@@ -67,6 +67,13 @@ require('packer').startup {
         }
 
         use {
+            'lukas-reineke/indent-blankline.nvim',
+            config = function()
+                require('mamoruds.plugins.indent_blankline')
+            end,
+        }
+
+        use {
             'neoclide/coc.nvim',
             branch = 'release',
             cond = function()
