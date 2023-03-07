@@ -1,3 +1,19 @@
+local packer_bootstrap = false
+local packer_path = vim.fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
+if vim.fn.empty(vim.fn.glob(packer_path)) > 0 then
+    vim.fn.system {
+        'git',
+        'clone',
+        '--depth',
+        '1',
+        'https://github.com/wbthomason/packer.nvim.git',
+        packer_path
+    }
+    vim.o.runtimepath = vim.o.runtimepath .. ',' .. packer_path
+    packer_bootstrap = true
+end
+
+
 require('packer').startup {
     function(use)
         use 'wbthomason/packer.nvim'
@@ -85,6 +101,10 @@ require('packer').startup {
                 return (vim.fn.executable('node') == 1) or (vim.fn.empty(vim.g.copilot_node_command) == 0)
             end,
         }
+
+        if packer_bootstrap then
+            require('packer').sync()
+        end
     end,
     config = {
         display = {
