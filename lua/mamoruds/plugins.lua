@@ -91,7 +91,14 @@ require('packer').startup {
         use 'cespare/vim-toml'
         {{#if nvim_python3_host_prog}}
 
-        use { 'numirias/semshi', run = ':UpdateRemotePlugins', ft = 'python' }
+        use {
+            'numirias/semshi',
+            -- cond = function()
+            --     return (vim.fn.executable('python') == 1)
+            -- end,
+            ft = 'python',
+            run = ':UpdateRemotePlugins',
+        }
         {{/if}}
 
         use {
@@ -99,6 +106,14 @@ require('packer').startup {
             branch = 'main',
             config = function()
                 require('mamoruds.plugins.oscyank')
+            end,
+        }
+
+        use {
+            'nvim-treesitter/nvim-treesitter',
+            run = function()
+                local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+                ts_update()
             end,
         }
 
