@@ -12,12 +12,13 @@ vim.g.coc_global_extensions = {
 -- default coc-settings.json under `~/.config/nvim` will handled by dotter
 -- vim.g.coc_config_home = "{{nvim_coc_config_home}}"
 
--- TODO: for dark only
-vim.cmd [[
-    hi CocFloating              guibg=#0d1117
-    hi CocNotificationProgress  guifg=#58a6ff
-    hi CocInlayHint             guifg=#ffa8cc gui=italic
-]]
+if vim.opt.background:get() == 'dark' then
+    vim.cmd [[
+        hi CocFloating              guibg=None
+        hi CocNotificationProgress  guifg=#58a6ff
+        hi CocInlayHint             guifg=#ffa8cc gui=italic
+    ]]
+end
 
 local keyset = vim.keymap.set
 -- Autocomplete
