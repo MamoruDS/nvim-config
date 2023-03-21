@@ -122,7 +122,7 @@ require('packer').startup {
             cond = function()
                 return (vim.fn.executable('node') == 1) or (vim.fn.empty(vim.g.copilot_node_command) == 0)
             end,
-            config = function()
+            setup = function()
                 require('mamoruds.plugins.copilot')
             end,
         }
