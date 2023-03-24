@@ -6,9 +6,11 @@ local keyset = vim.keymap.set
 keyset(
     "i",
     "<C-t>",
-    'copilot#Accept("\\<CR>")',
+    "copilot#Accept('<CR>')",
     {
+        noremap = true,
         silent = true,
         expr = true,
+        replace_keycodes = false,
     }
 )
