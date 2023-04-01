@@ -56,7 +56,12 @@ require('packer').startup {
         }
 
         {{#if (eq use_nerdfont 1)}}
-        use 'nvim-tree/nvim-web-devicons'
+        use {
+            'nvim-tree/nvim-web-devicons',
+            config = function()
+                require('mamoruds.plugins.nvim-web-devicons')
+            end,
+        }
 
         {{/if}}
         use {
