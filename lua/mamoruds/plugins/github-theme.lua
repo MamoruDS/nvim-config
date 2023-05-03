@@ -19,7 +19,7 @@ require("github-theme").setup {
 vim.cmd[[
     hi LineNr       ctermbg=None    ctermfg=240 guifg=#5d5f61
     hi CursorLine   ctermbg=8       guibg=#292e36
-    colorscheme github_dark_default
+    colorscheme github_dark_tritanopia
 ]]
 {{/if}}
 {{#if (eq nvim_background "light")}}
