@@ -14,78 +14,99 @@ if vim.fn.empty(vim.fn.glob(packer_path)) > 0 then
 end
 
 
+function _require(module_name)
+    local default_prefix = 'mamoruds'
+    local local_prefix = 'local'
+    require(default_prefix .. '.' .. module_name)
+    local status, err = pcall(require, local_prefix .. '.' .. module_name)
+    notify = require('notify')
+    if not status then
+        if not string.find(err, 'not found:') then
+            require('notify')('Failed to load module: ' .. local_prefix .. '.' .. module_name .. '\n' .. err, 'error')
+        end
+    end
+end
+
 require('packer').startup {
     function(use)
         use 'wbthomason/packer.nvim'
 
         use {
             'numToStr/Comment.nvim',
+            after = 'nvim-notify',
             config = function()
-                require('mamoruds.plugins.comment')
+                _require('plugins.comment')
             end
         }
 
         use {
             'rcarriga/nvim-notify',
             config = function()
-                require('mamoruds.plugins.nvim-notify')
+                _require('plugins.nvim-notify')
             end,
         }
 
         use {
             'projekt0n/github-nvim-theme',
+            after = 'nvim-notify',
             config = function()
-                require('mamoruds.plugins.github-theme')
+                _require('plugins.github-theme')
             end,
         }
 
         use {
             'nvim-lualine/lualine.nvim',
+            after = 'nvim-notify',
             event = 'BufEnter',
             config = function()
-                require('mamoruds.plugins.lualine')
+                _require('plugins.lualine')
             end,
         }
 
         use {
             'lewis6991/gitsigns.nvim',
+            after = 'nvim-notify',
             event = 'BufRead',
             config = function()
-                require('mamoruds.plugins.gitsigns')
+                _require('plugins.gitsigns')
             end,
         }
 
         {{#if (eq use_nerdfont 1)}}
         use {
             'nvim-tree/nvim-web-devicons',
+            after = 'nvim-notify',
             config = function()
-                require('mamoruds.plugins.nvim-web-devicons')
+                _require('plugins.nvim-web-devicons')
             end,
         }
 
         {{/if}}
         use {
             'nvim-tree/nvim-tree.lua',
+            after = 'nvim-notify',
             config = function()
-                require('mamoruds.plugins.nvim-tree')
+                _require('plugins.nvim-tree')
             end,
         }
 
         use {
             'lukas-reineke/indent-blankline.nvim',
+            after = 'nvim-notify',
             config = function()
-                require('mamoruds.plugins.indent_blankline')
+                _require('plugins.indent_blankline')
             end,
         }
 
         use {
             'neoclide/coc.nvim',
+            after = 'nvim-notify',
             branch = 'release',
             cond = function()
                 return (vim.fn.executable('node') == 1) or (vim.fn.empty(vim.g.node_host_prog) == 0)
             end,
             config = function()
-                require('mamoruds.plugins.coc')
+                _require('plugins.coc')
             end,
         }
 
@@ -108,9 +129,10 @@ require('packer').startup {
 
         use {
             'ojroques/vim-oscyank',
+            after = 'nvim-notify',
             branch = 'main',
             config = function()
-                require('mamoruds.plugins.oscyank')
+                _require('plugins.oscyank')
             end,
         }
 
@@ -124,11 +146,12 @@ require('packer').startup {
 
         use {
             'github/copilot.vim',
+            after = 'nvim-notify',
             cond = function()
                 return (vim.fn.executable('node') == 1) or (vim.fn.empty(vim.g.copilot_node_command) == 0)
             end,
             setup = function()
-                require('mamoruds.plugins.copilot')
+                _require('plugins.copilot')
             end,
         }
 
