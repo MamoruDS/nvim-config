@@ -67,6 +67,9 @@ require('packer').startup {
             'lewis6991/gitsigns.nvim',
             after = 'nvim-notify',
             event = 'BufRead',
+            cond = function()
+                return vim.wo.diff ~= true
+            end,
             config = function()
                 _require('plugins.gitsigns')
             end,
@@ -103,7 +106,10 @@ require('packer').startup {
             after = 'nvim-notify',
             branch = 'release',
             cond = function()
-                return (vim.fn.executable('node') == 1) or (vim.fn.empty(vim.g.node_host_prog) == 0)
+                return (
+                    (vim.fn.executable('node') == 1) or
+                    (vim.fn.empty(vim.g.node_host_prog) == 0)
+                ) and vim.wo.diff ~= true
             end,
             config = function()
                 _require('plugins.coc')
@@ -157,7 +163,10 @@ require('packer').startup {
             'github/copilot.vim',
             after = 'nvim-notify',
             cond = function()
-                return (vim.fn.executable('node') == 1) or (vim.fn.empty(vim.g.copilot_node_command) == 0)
+                return (
+                    (vim.fn.executable('node') == 1) or
+                    (vim.fn.empty(vim.g.copilot_node_command) == 0)
+                ) and vim.wo.diff ~= true
             end,
             setup = function()
                 _require('plugins.copilot')
