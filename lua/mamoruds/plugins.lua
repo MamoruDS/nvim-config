@@ -110,11 +110,20 @@ require('packer').startup {
             end,
         }
 
-        use 'gabrielelana/vim-markdown'
+        use {
+            'gabrielelana/vim-markdown',
+            after = 'nvim-notify',
+        }
 
-        use 'neoclide/jsonc.vim'
+        use {
+            'neoclide/jsonc.vim',
+            after = 'nvim-notify',
+        }
 
-        use 'cespare/vim-toml'
+        use {
+            'cespare/vim-toml',
+            after = 'nvim-notify',
+        }
         {{#if nvim_python3_host_prog}}
 
         use {
