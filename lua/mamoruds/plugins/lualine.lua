@@ -29,7 +29,16 @@ require('lualine').setup {
         },
         lualine_c = {
             { 'branch', icon = '' },
-            { 'diagnostics', sources = { "coc" } },
+            {
+                'diagnostics',
+                symbols = {
+                    error = 'E',
+                    warn = 'W',
+                    info = 'I',
+                    hint = 'H',
+                },
+                sources = { "coc" },
+            },
         },
         lualine_x = {
             'encoding',
