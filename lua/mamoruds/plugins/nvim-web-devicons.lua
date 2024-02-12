@@ -1,7 +1,7 @@
-require'nvim-web-devicons'.setup {
-    override = {
-        dockerfile = {
-            icon = "",
-        },
-    },
-}
+require("nvim-web-devicons").setup({
+	override = {
+		dockerfile = {
+			icon = "",
+		},
+	},
+})

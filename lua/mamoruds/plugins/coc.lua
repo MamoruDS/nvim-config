@@ -1,41 +1,39 @@
 -- default global extensions
 vim.g.coc_global_extensions = {
-    'coc-git',
-    'coc-json',
-    'coc-lists',
-    'coc-sh',
-    'coc-vimlsp',
-    'coc-yaml',
+	"coc-git",
+	"coc-json",
+	"coc-lists",
+	"coc-sh",
+	"coc-vimlsp",
+	"coc-yaml",
 }
 
 -- TODO:
 -- default coc-settings.json under `~/.config/nvim` will handled by dotter
 -- vim.g.coc_config_home = "{{nvim_coc_config_home}}"
 
-if vim.opt.background:get() == 'dark' then
-    vim.cmd [[
+if vim.opt.background:get() == "dark" then
+	vim.cmd([[
         hi CocFloating              guibg=None
         hi CocNotificationProgress  guifg=#58a6ff
         hi CocInlayHint             guifg=#ffa8cc gui=italic
-    ]]
+    ]])
 end
 
 local keyset = vim.keymap.set
 -- Autocomplete
 function _G.check_back_space()
-    local col = vim.fn.col('.') - 1
-    return col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') ~= nil
+	local col = vim.fn.col(".") - 1
+	return col == 0 or vim.fn.getline("."):sub(col, col):match("%s") ~= nil
 end
 
 local opts = {
-    silent = true,
-    noremap = true,
-    expr = true,
-    replace_keycodes = false,
+	silent = true,
+	noremap = true,
+	expr = true,
+	replace_keycodes = false,
 }
-keyset("i", "<TAB>",
-       'coc#pum#visible() ? coc#pum#next(1) : v:lua.check_back_space() ? "<TAB>" : coc#refresh()',
-       opts)
+keyset("i", "<TAB>", 'coc#pum#visible() ? coc#pum#next(1) : v:lua.check_back_space() ? "<TAB>" : coc#refresh()', opts)
 keyset("i", "<S-TAB>", [[coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"]], opts)
 
 -- Use <c-space> to trigger completion
@@ -54,16 +52,16 @@ keyset("n", "gr", "<Plug>(coc-references)", { silent = true })
 
 -- Use K to show documentation in preview window
 function _G.show_docs()
-    local cw = vim.fn.expand('<cword>')
-    if vim.fn.index({ 'vim', 'help' }, vim.bo.filetype) >= 0 then
-        vim.cmd('h ' .. cw)
-    elseif vim.api.nvim_eval('coc#rpc#ready()') then
-        vim.fn.CocActionAsync('doHover')
-    else
-        vim.cmd('!' .. vim.o.keywordprg .. ' ' .. cw)
-    end
+	local cw = vim.fn.expand("<cword>")
+	if vim.fn.index({ "vim", "help" }, vim.bo.filetype) >= 0 then
+		vim.cmd("h " .. cw)
+	elseif vim.api.nvim_eval("coc#rpc#ready()") then
+		vim.fn.CocActionAsync("doHover")
+	else
+		vim.cmd("!" .. vim.o.keywordprg .. " " .. cw)
+	end
 end
-keyset("n", "K", '<CMD>lua _G.show_docs()<CR>', { silent = true })
+keyset("n", "K", "<CMD>lua _G.show_docs()<CR>", { silent = true })
 
 -- Mappings for CoCList
 -- code actions and coc stuff
