@@ -105,32 +105,6 @@ require("lazy").setup({
 	},
 
 	{
-		"gabrielelana/vim-markdown",
-		ft = "markdown",
-	},
-
-	{
-		"neoclide/jsonc.vim",
-		ft = "jsonc",
-	},
-
-	{
-		"cespare/vim-toml",
-		ft = "toml",
-	},
-	-- {{#if nvim_python3_host_prog}}
-
-	{
-		"numirias/semshi",
-		-- cond = function()
-		--     return (vim.fn.executable('python') == 1)
-		-- end,
-		ft = "python",
-		build = ":UpdateRemotePlugins",
-	},
-	-- {{/if}}
-
-	{
 		"ojroques/vim-oscyank",
 		branch = "main",
 		config = function()
@@ -155,5 +129,33 @@ require("lazy").setup({
 		init = function()
 			_require("plugins.copilot")
 		end,
+	},
+
+	-- per filetype
+
+	{
+		"gabrielelana/vim-markdown",
+		ft = "markdown",
+	},
+	-- {{#if nvim_python3_host_prog}}
+
+	{
+		"numirias/semshi",
+		-- cond = function()
+		--     return (vim.fn.executable('python') == 1)
+		-- end,
+		ft = "python",
+		build = ":UpdateRemotePlugins",
+	},
+	-- {{/if}}
+
+	{
+		"cespare/vim-toml",
+		ft = "toml",
+	},
+
+	{
+		"neoclide/jsonc.vim",
+		ft = "jsonc",
 	},
 })
