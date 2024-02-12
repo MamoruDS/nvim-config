@@ -37,7 +37,7 @@ require("lualine").setup({
 					info = "I",
 					hint = "H",
 				},
-				sources = { "coc" },
+				sources = { "nvim_diagnostic", "coc" },
 			},
 		},
 		lualine_x = {
