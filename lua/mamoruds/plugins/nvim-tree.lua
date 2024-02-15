@@ -2,10 +2,6 @@
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
-local keyset = vim.keymap.set
-keyset("n", "<C-b>", vim.cmd.NvimTreeToggle)
-keyset("n", "<leader>tt", ":NvimTreeToggle<CR>")
-
 if vim.opt.background:get() == "dark" then
 	vim.cmd([[
         hi NvimTreeFolderIcon   guifg=#90a4ae

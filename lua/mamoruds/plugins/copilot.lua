@@ -13,12 +13,3 @@ vim.g.copilot_filetypes = {
 	javascript = true,
 	typescript = true,
 }
-
-local keyset = vim.keymap.set
-
-keyset("i", "<C-t>", "copilot#Accept('<CR>')", {
-	noremap = true,
-	silent = true,
-	expr = true,
-	replace_keycodes = false,
-})
