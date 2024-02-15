@@ -132,6 +132,18 @@ require("lazy").setup({
 	},
 
 	{
+		"folke/which-key.nvim",
+		event = "VeryLazy",
+		init = function()
+			vim.o.timeout = true
+			vim.o.timeoutlen = 300
+		end,
+		config = function()
+			_require("plugins.which_key")
+		end,
+	},
+
+	{
 		"ibhagwan/fzf-lua",
 		-- optional for icon support
 		-- dependencies = { "nvim-tree/nvim-web-devicons" },
