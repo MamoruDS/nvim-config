@@ -189,17 +189,9 @@ require("lazy").setup({
 		"gabrielelana/vim-markdown",
 		ft = "markdown",
 	},
-	-- {{#if nvim_python3_host_prog}}
 
 	{
-		"numirias/semshi",
-		-- cond = function()
-		--     return (vim.fn.executable('python') == 1)
-		-- end,
-		ft = "python",
-		build = ":UpdateRemotePlugins",
 	},
-	-- {{/if}}
 
 	{
 		"cespare/vim-toml",
@@ -210,4 +202,17 @@ require("lazy").setup({
 		"neoclide/jsonc.vim",
 		ft = "jsonc",
 	},
+
+	-- {
+	-- 	"numirias/semshi",
+	-- 	enabled = false,
+	-- 	cond = function()
+	-- 		return (vim.fn.executable("python") == 1)
+	-- 	end,
+	-- 	ft = "python",
+	-- 	build = ":UpdateRemotePlugins",
+	-- 	config = function()
+	-- 		_require("plugins.semshi")
+	-- 	end,
+	-- },
 })
