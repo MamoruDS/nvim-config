@@ -17,7 +17,7 @@ if vim.opt.background:get() == "dark" then
         hi link NvimTreeEmptyFolderName NvimTreeGitIgnored
     ]])
 else
-	vim.com([[
+	vim.cmd([[
         hi NvimTreeFolderIcon   guifg=#90a4ae
         "
         hi NvimTreeGitIgnored       guifg=#b1bac4
