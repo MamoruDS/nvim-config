@@ -16,10 +16,12 @@ function _require(module_name)
 	local local_prefix = "local"
 	require(default_prefix .. "." .. module_name)
 	local status, err = pcall(require, local_prefix .. "." .. module_name)
-	notify = require("notify")
 	if not status then
 		if not string.find(err, "not found:") then
-			require("notify")("Failed to load module: " .. local_prefix .. "." .. module_name .. "\n" .. err, "error")
+			vim.notify({
+				"Failed to load module: " .. local_prefix .. "." .. module_name .. "\n" .. err,
+				vim.log.levels.ERROR,
+			})
 		end
 	end
 end
