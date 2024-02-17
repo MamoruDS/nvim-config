@@ -161,6 +161,14 @@ require("lazy").setup({
 		end,
 	},
 
+	{
+		"stevearc/conform.nvim",
+		event = "BufEnter",
+		config = function()
+			_require("plugins.conform")
+		end,
+	},
+
 	-- lsp
 
 	{
