@@ -76,6 +76,16 @@ require("lualine").setup({
 				end,
 				event = "BufEnter",
 			},
+			{
+				function()
+					if has_ts_parser() then
+						return ""
+					else
+						return "!TS"
+					end
+				end,
+				event = "BufEnter",
+			},
 			"encoding",
 			{ "fileformat", symbols = { unix = "LF", dos = "CRLF", mac = "CR" } },
 		},
