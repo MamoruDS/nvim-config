@@ -29,6 +29,7 @@ end
 require("lazy").setup({
 	{
 		"numToStr/Comment.nvim",
+		event = "BufEnter",
 		config = function()
 			_require("plugins.comment")
 		end,
@@ -82,6 +83,7 @@ require("lazy").setup({
 
 	{
 		"nvim-tree/nvim-tree.lua",
+		cmd = { "NvimTreeToggle", "NvimTreeOpen" },
 		config = function()
 			_require("plugins.nvim-tree")
 		end,
@@ -89,6 +91,7 @@ require("lazy").setup({
 
 	{
 		"lukas-reineke/indent-blankline.nvim",
+		event = "BufEnter",
 		config = function()
 			_require("plugins.indent_blankline")
 		end,
@@ -127,6 +130,7 @@ require("lazy").setup({
 
 	{
 		"github/copilot.vim",
+		event = "InsertEnter",
 		cond = function()
 			return ((vim.fn.executable("node") == 1) or (vim.fn.empty(vim.g.copilot_node_command) == 0))
 				and vim.wo.diff ~= true
