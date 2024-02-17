@@ -37,10 +37,33 @@ require("lazy").setup({
 
 	{
 		"rcarriga/nvim-notify",
+		enabled = false,
 		lazy = false,
 		priority = 1000,
 		config = function()
 			_require("plugins.nvim-notify")
+		end,
+	},
+
+	-- {
+	-- 	"j-hui/fidget.nvim",
+	-- 	lazy = false,
+	-- 	priority = 1000,
+	-- 	enabled = false, -- due to slow
+	-- 	config = function()
+	-- 		_require("plugins.fidget")
+	-- 	end,
+	-- },
+
+	{
+		"folke/noice.nvim",
+		event = "VeryLazy",
+		dependencies = {
+			"MunifTanjim/nui.nvim",
+			-- "rcarriga/nvim-notify",
+		},
+		config = function()
+			_require("plugins.noice")
 		end,
 	},
 
