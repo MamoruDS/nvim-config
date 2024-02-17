@@ -1,8 +1,8 @@
 require("which-key").setup({
-	icons = {
-		separator = "→",
-	},
-	window = {
-		border = "single",
-	},
+  icons = {
+    separator = "→",
+  },
+  window = {
+    border = "single",
+  },
 })

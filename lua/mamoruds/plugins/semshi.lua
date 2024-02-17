@@ -1,4 +1,4 @@
--- vim.g.python3_host_prog = 
+-- vim.g.python3_host_prog =
 
 vim.cmd([[
     hi semshiImported None
@@ -20,14 +20,14 @@ vim.cmd([[
 ]])
 
 vim.g["semshi#excluded_hl_groups"] = {
-	"local",
-	"unresolved",
-	-- "attribute",
-	-- "builtin",
-	"free",
-	"global", -- not working
-	-- "parameter",
-	-- "parameterUnused",
-	-- "self",
-	-- "imported",
+  "local",
+  "unresolved",
+  -- "attribute",
+  -- "builtin",
+  "free",
+  "global", -- not working
+  -- "parameter",
+  -- "parameterUnused",
+  -- "self",
+  -- "imported",
 }

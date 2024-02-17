@@ -1,19 +1,19 @@
 -- help ibl.config
 
 require("ibl").setup({
-	indent = {
-		char = "▏",
-		-- char = "▌",
-		-- highlight = { "VertSplit" },
-	},
-	exclude = {
-		filetypes = {
-			"terminal",
-		},
-		buftypes = {
-			"terminal",
-		},
-	},
+  indent = {
+    char = "▏",
+    -- char = "▌",
+    -- highlight = { "VertSplit" },
+  },
+  exclude = {
+    filetypes = {
+      "terminal",
+    },
+    buftypes = {
+      "terminal",
+    },
+  },
 })
 
 local hooks = require("ibl.hooks")
