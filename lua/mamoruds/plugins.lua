@@ -176,9 +176,14 @@ require("lazy").setup({
 		end,
 	},
 
+	-- -- {
+	-- -- 	"nvim-telescope/telescope.nvim",
+	-- -- 	branch = "0.1.x",
+	-- -- 	dependencies = { "nvim-lua/plenary.nvim" },
+	-- -- },
+
 	{
 		"ibhagwan/fzf-lua",
-		-- optional for icon support
 		-- dependencies = { "nvim-tree/nvim-web-devicons" },
 		config = function()
 			_require("plugins.fzf_lua")

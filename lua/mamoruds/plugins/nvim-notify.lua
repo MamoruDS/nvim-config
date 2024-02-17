@@ -43,7 +43,19 @@ end
 
 local timeout = vim.g.notify_timeout or 5000
 
+-- local stages = require("notify.stages.slide")("bottom_up")
+
 require("notify").setup({
+	-- stages = {
+	-- 	function(...)
+	-- 		local opts = stages[1](...)
+	-- 		if opts then
+	-- 			opts.border = "none"
+	-- 		end
+	-- 		return opts
+	-- 	end,
+	-- 	unpack(stages, 2),
+	-- },
 	stages = "slide",
 	render = render,
 	timeout = timeout,
