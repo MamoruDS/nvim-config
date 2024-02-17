@@ -161,19 +161,14 @@ require("lazy").setup({
 		end,
 	},
 
-	{
-		"williamboman/mason.nvim",
-		event = "BufEnter",
-	},
-
-	{
-		"williamboman/mason-lspconfig.nvim",
-		event = "BufEnter",
-	},
+	-- lsp
 
 	{
 		"neovim/nvim-lspconfig",
-		event = "BufEnter",
+		dependencies = {
+			"williamboman/mason.nvim",
+			"williamboman/mason-lspconfig.nvim",
+		},
 		config = function()
 			_require("plugins.lsp_config")
 		end,
