@@ -1,3 +1,8 @@
+-- coc
+vim.opt.backup = false
+vim.opt.writebackup = false
+vim.opt.signcolumn = "yes"
+
 -- default global extensions
 vim.g.coc_global_extensions = {
 	"coc-git",

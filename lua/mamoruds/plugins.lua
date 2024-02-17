@@ -97,17 +97,18 @@ require("lazy").setup({
 		end,
 	},
 
-	{
-		"neoclide/coc.nvim",
-		branch = "release",
-		cond = function()
-			return ((vim.fn.executable("node") == 1) or (vim.fn.empty(vim.g.node_host_prog) == 0))
-				and vim.wo.diff ~= true
-		end,
-		config = function()
-			_require("plugins.coc")
-		end,
-	},
+	-- {
+	-- 	"neoclide/coc.nvim",
+	-- 	branch = "release",
+	-- 	enabled = false,
+	-- 	cond = function()
+	-- 		return ((vim.fn.executable("node") == 1) or (vim.fn.empty(vim.g.node_host_prog) == 0))
+	-- 			and vim.wo.diff ~= true
+	-- 	end,
+	-- 	config = function()
+	-- 		_require("plugins.coc")
+	-- 	end,
+	-- },
 
 	{
 		"ojroques/vim-oscyank",

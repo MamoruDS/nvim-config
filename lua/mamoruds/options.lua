@@ -15,10 +15,5 @@ vim.opt.smartcase = true
 
 vim.opt.termguicolors = true
 
--- coc
-vim.opt.backup = false
-vim.opt.writebackup = false
-vim.opt.signcolumn = "yes"
-
 -- global variables
 vim.g.notify_timeout = 5000
