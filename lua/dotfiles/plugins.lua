@@ -211,27 +211,10 @@ require("lazy").setup({
     end,
   },
 
-  -- per filetype
-
-  {
-    "gabrielelana/vim-markdown",
-    ft = "markdown",
-  },
-
   {
     "mrcjkb/rustaceanvim",
     version = "^4",
     ft = { "rust" },
-  },
-
-  {
-    "cespare/vim-toml",
-    ft = "toml",
-  },
-
-  {
-    "neoclide/jsonc.vim",
-    ft = "jsonc",
   },
 
   -- {
