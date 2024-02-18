@@ -35,7 +35,11 @@ local function get_available_formatters()
 end
 
 local function has_ts_parser()
-  return require("nvim-treesitter.parsers").has_parser(vim.bo.filetype)
+  if vim.bo.filetype ~= "" then
+    return require("nvim-treesitter.parsers").has_parser(vim.bo.filetype)
+  else
+    return true
+  end
 end
 
 require("lualine").setup({
