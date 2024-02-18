@@ -1,6 +1,5 @@
 local utils = require("dotfiles.utils")
 
-utils.require("providers")
 utils.require("options")
 
 require("dotfiles.plugins")
