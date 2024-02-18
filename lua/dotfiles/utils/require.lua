@@ -1,5 +1,5 @@
 return function(module_name)
-  local default_prefix = "mamoruds"
+  local default_prefix = "dotfiles"
   local local_prefix = "local"
   require(default_prefix .. "." .. module_name)
   local status, err = pcall(require, local_prefix .. "." .. module_name)

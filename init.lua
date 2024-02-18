@@ -1,1 +1,1 @@
-require("mamoruds")
+require("dotfiles")

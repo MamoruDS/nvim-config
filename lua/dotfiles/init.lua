@@ -1,9 +1,9 @@
-local utils = require("mamoruds.utils")
+local utils = require("dotfiles.utils")
 
 utils.require("providers")
 utils.require("options")
 
-require("mamoruds.plugins")
+require("dotfiles.plugins")
 
 utils.require("keymaps")
 
