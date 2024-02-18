@@ -32,16 +32,6 @@ require("lazy").setup({
     end,
   },
 
-  -- {
-  -- 	"j-hui/fidget.nvim",
-  -- 	lazy = false,
-  -- 	priority = 1000,
-  -- 	enabled = false, -- due to slow
-  -- 	config = function()
-  -- 		utils.require("plugins.fidget")
-  -- 	end,
-  -- },
-
   {
     "folke/noice.nvim",
     event = "VeryLazy",
@@ -108,19 +98,6 @@ require("lazy").setup({
     end,
   },
 
-  -- {
-  -- 	"neoclide/coc.nvim",
-  -- 	branch = "release",
-  -- 	enabled = false,
-  -- 	cond = function()
-  -- 		return ((vim.fn.executable("node") == 1) or (vim.fn.empty(vim.g.node_host_prog) == 0))
-  -- 			and vim.wo.diff ~= true
-  -- 	end,
-  -- 	config = function()
-  -- 		utils.require("plugins.coc")
-  -- 	end,
-  -- },
-
   {
     "ojroques/vim-oscyank",
     branch = "main",
@@ -160,20 +137,14 @@ require("lazy").setup({
       vim.o.timeoutlen = 300
     end,
     config = function()
-      utils.require("plugins.which_key")
+      utils.require("plugins.which-key")
     end,
   },
-
-  -- -- {
-  -- -- 	"nvim-telescope/telescope.nvim",
-  -- -- 	branch = "0.1.x",
-  -- -- 	dependencies = { "nvim-lua/plenary.nvim" },
-  -- -- },
 
   {
     "ibhagwan/fzf-lua",
     config = function()
-      utils.require("plugins.fzf_lua")
+      utils.require("plugins.fzf-lua")
     end,
   },
 
@@ -207,7 +178,7 @@ require("lazy").setup({
       "hrsh7th/cmp-path",
     },
     config = function()
-      utils.require("plugins.nvim_cmp")
+      utils.require("plugins.nvim-cmp")
     end,
   },
 
@@ -216,17 +187,4 @@ require("lazy").setup({
     version = "^4",
     ft = { "rust" },
   },
-
-  -- {
-  -- 	"numirias/semshi",
-  -- 	enabled = false,
-  -- 	cond = function()
-  -- 		return (vim.fn.executable("python") == 1)
-  -- 	end,
-  -- 	ft = "python",
-  -- 	build = ":UpdateRemotePlugins",
-  -- 	config = function()
-  -- 		utils.require("plugins.semshi")
-  -- 	end,
-  -- },
 })
