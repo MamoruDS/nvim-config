@@ -17,3 +17,7 @@ vim.opt.termguicolors = true
 
 -- global variables
 vim.g.notify_timeout = 5000
+
+-- {{#if use_nerdfont}}
+vim.g.use_nerdfont = true
+-- {{/if}}

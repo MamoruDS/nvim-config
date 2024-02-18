@@ -94,15 +94,16 @@ require("lazy").setup({
       _require("plugins.gitsigns")
     end,
   },
-  -- {{#if (eq use_nerdfont 1)}}
 
   {
     "nvim-tree/nvim-web-devicons",
+    cond = function()
+      return vim.g.use_nerdfont
+    end,
     config = function()
       _require("plugins.nvim-web-devicons")
     end,
   },
-  -- {{/if}}
 
   {
     "nvim-tree/nvim-tree.lua",
@@ -184,7 +185,6 @@ require("lazy").setup({
 
   {
     "ibhagwan/fzf-lua",
-    -- dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
       _require("plugins.fzf_lua")
     end,
