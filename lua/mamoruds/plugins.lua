@@ -11,27 +11,14 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-function _require(module_name)
-  local default_prefix = "mamoruds"
-  local local_prefix = "local"
-  require(default_prefix .. "." .. module_name)
-  local status, err = pcall(require, local_prefix .. "." .. module_name)
-  if not status then
-    if not string.find(err, "not found:") then
-      vim.notify({
-        "Failed to load module: " .. local_prefix .. "." .. module_name .. "\n" .. err,
-        vim.log.levels.ERROR,
-      })
-    end
-  end
-end
+local utils = require("mamoruds.utils")
 
 require("lazy").setup({
   {
     "numToStr/Comment.nvim",
     event = "BufEnter",
     config = function()
-      _require("plugins.comment")
+      utils.require("plugins.comment")
     end,
   },
 
@@ -41,7 +28,7 @@ require("lazy").setup({
     lazy = false,
     priority = 1000,
     config = function()
-      _require("plugins.nvim-notify")
+      utils.require("plugins.nvim-notify")
     end,
   },
 
@@ -51,7 +38,7 @@ require("lazy").setup({
   -- 	priority = 1000,
   -- 	enabled = false, -- due to slow
   -- 	config = function()
-  -- 		_require("plugins.fidget")
+  -- 		utils.require("plugins.fidget")
   -- 	end,
   -- },
 
@@ -63,7 +50,7 @@ require("lazy").setup({
       -- "rcarriga/nvim-notify",
     },
     config = function()
-      _require("plugins.noice")
+      utils.require("plugins.noice")
     end,
   },
 
@@ -72,7 +59,7 @@ require("lazy").setup({
     lazy = false,
     priority = 100,
     config = function()
-      _require("plugins.github-theme")
+      utils.require("plugins.github-theme")
     end,
   },
 
@@ -80,7 +67,7 @@ require("lazy").setup({
     "nvim-lualine/lualine.nvim",
     event = "BufEnter",
     config = function()
-      _require("plugins.lualine")
+      utils.require("plugins.lualine")
     end,
   },
 
@@ -91,7 +78,7 @@ require("lazy").setup({
       return vim.wo.diff ~= true
     end,
     config = function()
-      _require("plugins.gitsigns")
+      utils.require("plugins.gitsigns")
     end,
   },
 
@@ -101,7 +88,7 @@ require("lazy").setup({
       return vim.g.use_nerdfont
     end,
     config = function()
-      _require("plugins.nvim-web-devicons")
+      utils.require("plugins.nvim-web-devicons")
     end,
   },
 
@@ -109,7 +96,7 @@ require("lazy").setup({
     "nvim-tree/nvim-tree.lua",
     cmd = { "NvimTreeToggle", "NvimTreeOpen" },
     config = function()
-      _require("plugins.nvim-tree")
+      utils.require("plugins.nvim-tree")
     end,
   },
 
@@ -117,7 +104,7 @@ require("lazy").setup({
     "lukas-reineke/indent-blankline.nvim",
     event = "BufEnter",
     config = function()
-      _require("plugins.indent_blankline")
+      utils.require("plugins.indent_blankline")
     end,
   },
 
@@ -130,7 +117,7 @@ require("lazy").setup({
   -- 			and vim.wo.diff ~= true
   -- 	end,
   -- 	config = function()
-  -- 		_require("plugins.coc")
+  -- 		utils.require("plugins.coc")
   -- 	end,
   -- },
 
@@ -138,7 +125,7 @@ require("lazy").setup({
     "ojroques/vim-oscyank",
     branch = "main",
     config = function()
-      _require("plugins.oscyank")
+      utils.require("plugins.oscyank")
     end,
   },
 
@@ -149,7 +136,7 @@ require("lazy").setup({
       ts_update()
     end,
     config = function()
-      _require("plugins.nvim-treesitter")
+      utils.require("plugins.nvim-treesitter")
     end,
   },
 
@@ -161,7 +148,7 @@ require("lazy").setup({
         and vim.wo.diff ~= true
     end,
     init = function()
-      _require("plugins.copilot")
+      utils.require("plugins.copilot")
     end,
   },
 
@@ -173,7 +160,7 @@ require("lazy").setup({
       vim.o.timeoutlen = 300
     end,
     config = function()
-      _require("plugins.which_key")
+      utils.require("plugins.which_key")
     end,
   },
 
@@ -186,7 +173,7 @@ require("lazy").setup({
   {
     "ibhagwan/fzf-lua",
     config = function()
-      _require("plugins.fzf_lua")
+      utils.require("plugins.fzf_lua")
     end,
   },
 
@@ -194,7 +181,7 @@ require("lazy").setup({
     "stevearc/conform.nvim",
     event = "BufEnter",
     config = function()
-      _require("plugins.conform")
+      utils.require("plugins.conform")
     end,
   },
 
@@ -207,7 +194,7 @@ require("lazy").setup({
       "williamboman/mason-lspconfig.nvim",
     },
     config = function()
-      _require("plugins.lsp_config")
+      utils.require("plugins.lsp_config")
     end,
   },
 
@@ -220,7 +207,7 @@ require("lazy").setup({
       "hrsh7th/cmp-path",
     },
     config = function()
-      _require("plugins.nvim_cmp")
+      utils.require("plugins.nvim_cmp")
     end,
   },
 
@@ -256,7 +243,7 @@ require("lazy").setup({
   -- 	ft = "python",
   -- 	build = ":UpdateRemotePlugins",
   -- 	config = function()
-  -- 		_require("plugins.semshi")
+  -- 		utils.require("plugins.semshi")
   -- 	end,
   -- },
 })
