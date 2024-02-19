@@ -1,4 +1,6 @@
- local keyset = vim.keymap.set
+local utils = require("dotfiles.utils")
+
+local keyset = vim.keymap.set
 local opts = {
   -- noremap = true,
   silent = true,
@@ -8,8 +10,88 @@ local opts = {
 
 keyset("n", "<leader>tl", "<cmd>LspInfo<CR>", opts)
 
--- if vim.fn.exists(":CocInfo") then
--- end
+keyset("n", "<space>e", vim.diagnostic.open_float, { desc = "vim.diagnostic.open_float()" })
+keyset("n", "<space>q", vim.diagnostic.setloclist, { desc = "vim.diagnostic.setloclist()" })
+
+vim.api.nvim_create_autocmd("LspAttach", {
+  group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+  callback = function(ev)
+    -- `:h vim.lsp.*`
+    local opts = { buffer = ev.buf }
+    keyset(
+      "n",
+      "gD",
+      vim.lsp.buf.declaration,
+      utils.mergeTables(opts, {
+        desc = "vim.lsp.buf.declaration()",
+      })
+    )
+    keyset(
+      "n",
+      "gd",
+      vim.lsp.buf.definition,
+      utils.mergeTables(opts, {
+        desc = "vim.lsp.buf.definition()",
+      })
+    )
+    keyset(
+      "n",
+      "K",
+      vim.lsp.buf.hover,
+      utils.mergeTables(opts, {
+        desc = "vim.lsp.buf.hover()",
+      })
+    )
+    keyset(
+      "n",
+      "gi",
+      vim.lsp.buf.implementation,
+      utils.mergeTables(opts, {
+        desc = "vim.lsp.buf.implementation()",
+      })
+    )
+    keyset(
+      "n",
+      "<C-k>",
+      vim.lsp.buf.signature_help,
+      utils.mergeTables(opts, {
+        desc = "vim.lsp.buf.signature_help()",
+      })
+    )
+    keyset(
+      "n",
+      "<space>D",
+      vim.lsp.buf.type_definition,
+      utils.mergeTables(opts, {
+        desc = "vim.lsp.buf.type_definition()",
+      })
+    )
+    keyset(
+      "n",
+      "<space>rn",
+      vim.lsp.buf.rename,
+      utils.mergeTables(opts, {
+        desc = "()",
+      })
+    )
+    keyset(
+      { "n", "v" },
+      "<space>ca",
+      vim.lsp.buf.code_action,
+      utils.mergeTables(opts, {
+        desc = "vim.lsp.buf.code_action()",
+      })
+    )
+    keyset(
+      "n",
+      "gr",
+      vim.lsp.buf.references,
+      utils.mergeTables(opts, {
+        desc = "vim.lsp.buf.references()",
+      })
+    )
+  end,
+})
 
 if vim.fn.exists(":ConformInfo") then
   opts = { silent = true }
@@ -27,17 +109,71 @@ if vim.fn.exists(":Copilot") then
 end
 
 if vim.fn.exists(":FzfLua") then
+  fzf_lua = require("fzf-lua")
   opts = { silent = true }
-  keyset("n", "<leader>pb", "<cmd>lua require('fzf-lua').buffers()<CR>", opts)
-  keyset("n", "<leader>pd", "<cmd>lua require('fzf-lua').diagnostics_document()<CR>", opts)
-  keyset("n", "<leader>pf", "<cmd>lua require('fzf-lua').files()<CR>", opts)
-  keyset("n", "<leader>ph", "<cmd>lua require('fzf-lua').highlights()<CR>", opts)
-  keyset("n", "<leader>pm", "<cmd>lua require('fzf-lua').help_tags()<CR>", opts)
-  -- TODO: history
-  -- keyset("n", "<leader>pn", "<cmd>lua <CR>", opts)
-  keyset("n", "<leader>pp", "<cmd>lua require('fzf-lua').commands()<CR>", opts)
-  keyset("n", "<leader>pq", "<cmd>lua require('fzf-lua').command_history()<CR>", opts)
-  keyset("n", "<leader>pr", "<cmd>lua require('fzf-lua').registers()<CR>", opts)
+  keyset(
+    "n",
+    "<leader>pb",
+    fzf_lua.buffers,
+    utils.mergeTables(opts, {
+      desc = "fzf-lua.buffers()",
+    })
+  )
+  keyset(
+    "n",
+    "<leader>pd",
+    fzf_lua.diagnostics_document,
+    utils.mergeTables(opts, { desc = "fzf-lua.diagnostics_document()" })
+  )
+  keyset(
+    "n",
+    "<leader>pf",
+    fzf_lua.files,
+    utils.mergeTables(opts, {
+      desc = "fzf-lua.files()",
+    })
+  )
+  keyset(
+    "n",
+    "<leader>ph",
+    fzf_lua.highlights,
+    utils.mergeTables(opts, {
+      desc = "fzf-lua.highlights()",
+    })
+  )
+  keyset(
+    "n",
+    "<leader>pm",
+    fzf_lua.help_tags,
+    utils.mergeTables(opts, {
+      desc = "fzf-lua.help_tags()",
+    })
+  )
+  -- TODO: noice history
+  keyset(
+    "n",
+    "<leader>pp",
+    fzf_lua.commands,
+    utils.mergeTables(opts, {
+      desc = "fzf-lua.commands()",
+    })
+  )
+  keyset(
+    "n",
+    "<leader>pq",
+    fzf_lua.command_history,
+    utils.mergeTables(opts, {
+      desc = "fzf-lua.command_history()",
+    })
+  )
+  keyset(
+    "n",
+    "<leader>pr",
+    fzf_lua.registers,
+    utils.mergeTables(opts, {
+      desc = "fzf-lua.registers()",
+    })
+  )
 end
 
 if vim.fn.exists(":NvimTreeToggle") then
