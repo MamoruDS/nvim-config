@@ -149,6 +149,12 @@ require("lazy").setup({
   },
 
   {
+    "L3MON4D3/LuaSnip",
+    version = "v2.*",
+    event = "VeryLazy",
+  },
+
+  {
     "stevearc/conform.nvim",
     event = "BufEnter",
     config = function()
@@ -176,6 +182,7 @@ require("lazy").setup({
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
+      "L3MON4D3/LuaSnip",
     },
     config = function()
       utils.require("plugins.nvim-cmp")
