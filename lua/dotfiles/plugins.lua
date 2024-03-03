@@ -63,6 +63,11 @@ require("lazy").setup({
   },
 
   {
+    "monaqa/dial.nvim",
+    event = "VeryLazy",
+  },
+
+  {
     "lewis6991/gitsigns.nvim",
     event = "BufRead",
     cond = function()

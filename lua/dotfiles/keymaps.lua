@@ -58,6 +58,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
         desc = "vim.lsp.buf.signature_help()",
       })
     )
+    -- keyset("n", "<space>wa", vim.lsp.buf.add_workspace_folder, opts)
+    -- keyset("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, opts)
+    -- keyset("n", "<space>wl", function()
+    --   print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+    -- end, opts)
     keyset(
       "n",
       "<space>D",
@@ -107,6 +112,13 @@ if vim.fn.exists(":Copilot") then
   }
   keyset("i", "<C-t>", "copilot#Accept('<CR>')", opts)
 end
+
+keyset({ "n", "v" }, "<C-a>", function()
+  require("dial.map").manipulate("increment", "normal")
+end)
+keyset({ "n", "v" }, "<C-x>", function()
+  require("dial.map").manipulate("decrement", "normal")
+end)
 
 if vim.fn.exists(":FzfLua") then
   fzf_lua = require("fzf-lua")
