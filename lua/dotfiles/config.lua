@@ -2,7 +2,11 @@ local M = {}
 
 local utils = require("dotfiles.utils")
 
-M.default_opts = {}
+M.default_opts = {
+  copilot = {
+    enabled = false,
+  },
+}
 
 M.config = nil
 

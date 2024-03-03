@@ -12,6 +12,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local utils = require("dotfiles.utils")
+local config = require("dotfiles.config").config
 
 require("lazy").setup({
   {
@@ -119,6 +120,7 @@ require("lazy").setup({
 
   {
     "github/copilot.vim",
+    enabled = config.copilot.enabled,
     event = "InsertEnter",
     cond = function()
       return ((vim.fn.executable("node") == 1) or (vim.fn.empty(vim.g.copilot_node_command) == 0))
