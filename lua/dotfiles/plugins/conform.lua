@@ -41,6 +41,7 @@ require("conform").setup({
     json = { { "prettierd", "prettier" } },
     jsonc = { { "prettierd", "prettier" } },
     lua = { "stylua" },
+    markdown = { { "prettierd", "prettier" } },
     nix = { "nixfmt" },
     python = { { "ruff_format", "black" } },
     ruby = { { "rubyfmt", "rubocop" } },
