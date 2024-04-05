@@ -35,7 +35,17 @@ local function get_available_formatters()
 end
 
 local function has_ts_parser()
-  if vim.bo.filetype ~= "" then
+  local function is_parser_available(filetype)
+    local available_parsers = require("nvim-treesitter.parsers").available_parsers()
+    for _, parser in ipairs(available_parsers) do
+      if parser == filetype then
+        return true
+      end
+    end
+    return false
+  end
+
+  if vim.bo.filetype ~= "" and is_parser_available(vim.bo.filetype) then
     return require("nvim-treesitter.parsers").has_parser(vim.bo.filetype)
   else
     return true
