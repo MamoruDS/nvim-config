@@ -120,7 +120,7 @@ keyset({ "n", "v" }, "<C-x>", function()
   require("dial.map").manipulate("decrement", "normal")
 end)
 
-if vim.fn.exists(":FzfLua") then
+if vim.fn.exists(":FzfLua") == 1 then
   fzf_lua = require("fzf-lua")
   opts = { silent = true }
   keyset(
