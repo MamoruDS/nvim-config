@@ -6,7 +6,16 @@ config.setup({})
 
 utils.require("options")
 
-require("dotfiles.plugins")
+neg_tags = {}
+if vim.g.vscode then
+  table.insert(neg_tags, "no-vscode")
+end
+local plugins = require("dotfiles.plugins")
+plugins.setup({
+  tags = {
+    negative = neg_tags,
+  },
+})
 
 utils.require("keymaps")
 

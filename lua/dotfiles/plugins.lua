@@ -1,3 +1,5 @@
+local M = {}
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -14,9 +16,10 @@ vim.opt.rtp:prepend(lazypath)
 local utils = require("dotfiles.utils")
 local config = require("dotfiles.config").config
 
-require("lazy").setup({
+M.plugins = {
   {
     "numToStr/Comment.nvim",
+    tags = { "default", "utils" },
     event = "BufEnter",
     config = function()
       utils.require("plugins.comment")
@@ -25,6 +28,7 @@ require("lazy").setup({
 
   {
     "rcarriga/nvim-notify",
+    tags = { "default", "no-vscode", "tui" },
     enabled = false,
     lazy = false,
     priority = 1000,
@@ -35,6 +39,7 @@ require("lazy").setup({
 
   {
     "folke/noice.nvim",
+    tags = { "default", "no-vscode", "tui" },
     event = "VeryLazy",
     dependencies = {
       "MunifTanjim/nui.nvim",
@@ -47,6 +52,7 @@ require("lazy").setup({
 
   {
     "projekt0n/github-nvim-theme",
+    tags = { "default", "no-vscode", "tui" },
     lazy = false,
     priority = 100,
     config = function()
@@ -56,6 +62,7 @@ require("lazy").setup({
 
   {
     "nvim-lualine/lualine.nvim",
+    tags = { "default", "no-vscode", "tui" },
     event = "BufEnter",
     config = function()
       utils.require("plugins.lualine")
@@ -64,11 +71,13 @@ require("lazy").setup({
 
   {
     "monaqa/dial.nvim",
+    tags = { "default", "utils" },
     event = "VeryLazy",
   },
 
   {
     "lewis6991/gitsigns.nvim",
+    tags = { "default", "no-vscode", "tui" },
     event = "BufRead",
     cond = function()
       return vim.wo.diff ~= true
@@ -80,6 +89,7 @@ require("lazy").setup({
 
   {
     "nvim-tree/nvim-web-devicons",
+    tags = { "default", "no-vscode", "tui" },
     cond = function()
       return vim.g.use_nerdfont
     end,
@@ -90,6 +100,7 @@ require("lazy").setup({
 
   {
     "nvim-tree/nvim-tree.lua",
+    tags = { "default", "no-vscode", "tui" },
     cmd = { "NvimTreeToggle", "NvimTreeOpen" },
     config = function()
       utils.require("plugins.nvim-tree")
@@ -98,6 +109,7 @@ require("lazy").setup({
 
   {
     "lukas-reineke/indent-blankline.nvim",
+    tags = { "default", "no-vscode", "tui" },
     event = "BufEnter",
     config = function()
       utils.require("plugins.indent_blankline")
@@ -106,6 +118,7 @@ require("lazy").setup({
 
   {
     "ojroques/vim-oscyank",
+    tags = { "default", "utils" },
     branch = "main",
     config = function()
       utils.require("plugins.oscyank")
@@ -114,6 +127,7 @@ require("lazy").setup({
 
   {
     "nvim-treesitter/nvim-treesitter",
+    tags = { "default" },
     build = function()
       local ts_update = require("nvim-treesitter.install").update({ with_sync = true })
       ts_update()
@@ -125,6 +139,7 @@ require("lazy").setup({
 
   {
     "github/copilot.vim",
+    tags = { "default", "ai", "no-vscode" },
     enabled = config.copilot.enabled,
     event = "InsertEnter",
     cond = function()
@@ -138,6 +153,7 @@ require("lazy").setup({
 
   {
     "folke/which-key.nvim",
+    tags = { "default", "no-vscode", "tui" },
     event = "VeryLazy",
     init = function()
       vim.o.timeout = true
@@ -150,6 +166,7 @@ require("lazy").setup({
 
   {
     "ibhagwan/fzf-lua",
+    tags = { "default", "no-vscode", "tui" },
     config = function()
       utils.require("plugins.fzf-lua")
     end,
@@ -157,12 +174,14 @@ require("lazy").setup({
 
   {
     "L3MON4D3/LuaSnip",
+    tags = { "default", "utils" },
     version = "v2.*",
     event = "VeryLazy",
   },
 
   {
     "stevearc/conform.nvim",
+    tags = { "default", "lsp", "no-vscode" },
     event = "BufEnter",
     config = function()
       utils.require("plugins.conform")
@@ -173,6 +192,7 @@ require("lazy").setup({
 
   {
     "neovim/nvim-lspconfig",
+    tags = { "default", "lsp" },
     dependencies = {
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
@@ -184,6 +204,7 @@ require("lazy").setup({
 
   {
     "hrsh7th/nvim-cmp",
+    tags = { "default" },
     event = "InsertEnter",
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
@@ -198,7 +219,42 @@ require("lazy").setup({
 
   {
     "mrcjkb/rustaceanvim",
+    tags = { "default" },
     version = "^4",
     ft = { "rust" },
   },
-})
+}
+
+function M.load_plugins(plugins, pos_tags, neg_tags)
+  local loads = {}
+  for _, plugin in ipairs(plugins) do
+    local load = false
+    for _, tag in ipairs(plugin.tags) do
+      if utils.isInTable(neg_tags, tag) then
+        load = false
+        break
+      end
+      if utils.isInTable(pos_tags, tag) then
+        load = true
+      end
+    end
+    if load then
+      table.insert(loads, plugin)
+    end
+  end
+  require("lazy").setup(loads)
+end
+
+M.default_opts = {
+  tags = {
+    positive = { "default" },
+    negative = {},
+  },
+}
+
+function M.setup(opts)
+  opts = utils.mergeTables(M.default_opts, opts)
+  M.load_plugins(M.plugins, opts.tags.positive, opts.tags.negative)
+end
+
+return M
