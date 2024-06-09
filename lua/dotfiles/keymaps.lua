@@ -202,3 +202,21 @@ if vim.fn.exists(":Noice") then
   opts = { silent = true }
   keyset("n", "<leader>tn", "<cmd>Noice history<CR>", opts)
 end
+
+if vim.g.vscode then
+  -- TODO:
+  opts = { silent = true }
+  local vscode = require("vscode")
+  keyset({ "n", "x" }, "<leader>te", function()
+    vscode.action("workbench.view.explorer")
+  end)
+  keyset({ "n", "x" }, "<leader>tm", function()
+    vscode.action("workbench.view.extensions")
+  end)
+  keyset({ "n", "x" }, "<leader>pf", function()
+    vscode.action("workbench.action.quickOpen")
+  end)
+  keyset({ "n", "x" }, "<leader>pp", function()
+    vscode.action("workbench.action.showCommands")
+  end)
+end
