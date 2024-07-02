@@ -207,6 +207,12 @@ if vim.g.vscode then
   -- TODO:
   opts = { silent = true }
   local vscode = require("vscode")
+  keyset({ "v" }, "<leader>cy", function()
+    vscode.action("editor.action.clipboardCopyAction")
+  end)
+  keyset({ "n", "x" }, "<leader>tb", function()
+    vscode.action("workbench.action.toggleSidebarVisibility")
+  end)
   keyset({ "n", "x" }, "<leader>te", function()
     vscode.action("workbench.view.explorer")
   end)
