@@ -2,7 +2,7 @@ require("which-key").setup({
   icons = {
     separator = "→",
   },
-  window = {
+  win = {
     border = "single",
   },
 })
