@@ -1,20 +1,22 @@
+--- @param name string
+--- @param value string
 local function get_hex_hl(name, value)
-  local hl = vim.api.nvim_get_hl_by_name(name, true)
+  local hl = vim.api.nvim_get_hl(0, {name=name})
   return string.format("#%06x", hl[value])
 end
 
 local colors = {
-  fg = get_hex_hl("Normal", "foreground"),
-  ["fg+"] = get_hex_hl("Normal", "foreground"),
-  ["bg+"] = get_hex_hl("CursorLine", "background"),
-  hl = get_hex_hl("String", "foreground"),
-  ["hl+"] = get_hex_hl("Title", "foreground"),
+  fg = get_hex_hl("Normal", "fg"),
+  ["fg+"] = get_hex_hl("Normal", "fg"),
+  ["bg+"] = get_hex_hl("CursorLine", "bg"),
+  hl = get_hex_hl("String", "fg"),
+  ["hl+"] = get_hex_hl("Title", "fg"),
   -- prompt = ,
-  spinner = get_hex_hl("Title", "foreground"),
-  pointer = get_hex_hl("Title", "foreground"),
-  info = get_hex_hl("PreProc", "foreground"),
+  spinner = get_hex_hl("Title", "fg"),
+  pointer = get_hex_hl("Title", "fg"),
+  info = get_hex_hl("PreProc", "fg"),
   -- info = ,
-  header = get_hex_hl("NonText", "foreground"),
+  header = get_hex_hl("NonText", "fg"),
 }
 local fzf_colors = {}
 for k, v in pairs(colors) do
