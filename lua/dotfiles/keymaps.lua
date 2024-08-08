@@ -98,12 +98,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
   end,
 })
 
-if vim.fn.exists(":ConformInfo") then
+if vim.fn.exists(":ConformInfo") ~= 0 then
   opts = { silent = true }
   keyset("n", "<leader>tc", "<cmd>ConformInfo<CR>", opts)
 end
 
-if vim.fn.exists(":Copilot") then
+if vim.fn.exists(":Copilot") ~= 0 then
   opts = {
     noremap = true,
     silent = true,
@@ -120,7 +120,7 @@ keyset({ "n", "v" }, "<C-x>", function()
   require("dial.map").manipulate("decrement", "normal")
 end)
 
-if vim.fn.exists(":FzfLua") then
+if vim.fn.exists(":FzfLua") ~= 0 then
   local fzf_lua = require("fzf-lua")
   opts = { silent = true }
   keyset(
@@ -188,17 +188,21 @@ if vim.fn.exists(":FzfLua") then
   )
 end
 
-if vim.fn.exists(":NvimTreeToggle") then
+-- if 0 then
+--   os.exit(11)
+-- end
+
+if vim.fn.exists(":NvimTreeToggle") ~= 0 then
   opts = { silent = true }
   keyset("n", "<leader>te", "<cmd>NvimTreeToggle<CR>", opts)
 end
 
-if vim.fn.exists(":Mason") then
+if vim.fn.exists(":Mason") ~= 0 then
   opts = { silent = true }
   keyset("n", "<leader>tm", "<cmd>Mason<CR>", opts)
 end
 
-if vim.fn.exists(":Noice") then
+if vim.fn.exists(":Noice") ~= 0 then
   opts = { silent = true }
   keyset("n", "<leader>tn", "<cmd>Noice history<CR>", opts)
 end
