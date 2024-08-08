@@ -1,7 +1,7 @@
 -- :h notify:Config
 local base = require("notify.render.base")
 
-function render(bufnr, notif, highlights)
+local function render(bufnr, notif, highlights)
   local namespace = base.namespace()
   local icon = notif.icon
   local title = notif.title[1]
@@ -37,7 +37,7 @@ function render(bufnr, notif, highlights)
   })
 end
 
-function max_width()
+local function max_width()
   return vim.fn.winwidth(0) / 2
 end
 

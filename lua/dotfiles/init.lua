@@ -6,7 +6,7 @@ config.setup({})
 
 utils.require("options")
 
-neg_tags = {}
+local neg_tags = {}
 if vim.g.vscode then
   table.insert(neg_tags, "no-vscode")
 end

@@ -121,7 +121,7 @@ keyset({ "n", "v" }, "<C-x>", function()
 end)
 
 if vim.fn.exists(":FzfLua") then
-  fzf_lua = require("fzf-lua")
+  local fzf_lua = require("fzf-lua")
   opts = { silent = true }
   keyset(
     "n",
