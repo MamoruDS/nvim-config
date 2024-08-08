@@ -1,20 +1,7 @@
 local M = {}
 
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  })
-end
-vim.opt.rtp:prepend(lazypath)
-
-local utils = require("dotfiles.utils")
 local config = require("dotfiles.config").config
+local utils = require("dotfiles.utils")
 
 M.plugins = {
   {
@@ -222,6 +209,8 @@ M.plugins = {
 }
 
 function M.load_plugins(plugins, pos_tags, neg_tags)
+  local lazy = require("dotfiles.plugins.lazy")
+  lazy.bootstrap()
   local loads = {}
   for _, plugin in ipairs(plugins) do
     local load = false
@@ -238,7 +227,7 @@ function M.load_plugins(plugins, pos_tags, neg_tags)
       table.insert(loads, plugin)
     end
   end
-  require("lazy").setup(loads)
+  lazy.setup(loads)
 end
 
 M.default_opts = {
