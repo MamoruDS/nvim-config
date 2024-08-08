@@ -193,10 +193,6 @@ M.plugins = {
   {
     "neovim/nvim-lspconfig",
     tags = { "default", "lsp", "no-vscode" },
-    dependencies = {
-      "williamboman/mason.nvim",
-      "williamboman/mason-lspconfig.nvim",
-    },
     config = function()
       utils.require("plugins.lsp_config")
     end,
