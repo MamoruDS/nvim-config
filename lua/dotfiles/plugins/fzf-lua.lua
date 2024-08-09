@@ -1,7 +1,7 @@
 --- @param name string
 --- @param value string
 local function get_hex_hl(name, value)
-  local hl = vim.api.nvim_get_hl(0, {name=name})
+  local hl = vim.api.nvim_get_hl(0, { name = name })
   return string.format("#%06x", hl[value])
 end
 
