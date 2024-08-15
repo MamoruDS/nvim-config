@@ -155,6 +155,14 @@ if vim.fn.exists(":FzfLua") ~= 0 then
   )
   keyset(
     "n",
+    "<leader>pk",
+    fzf_lua.keymaps,
+    utils.mergeTables(opts, {
+      desc = "fzf-lua.keymaps()",
+    })
+  )
+  keyset(
+    "n",
     "<leader>pm",
     fzf_lua.help_tags,
     utils.mergeTables(opts, {
