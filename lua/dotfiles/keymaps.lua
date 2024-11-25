@@ -147,6 +147,30 @@ if vim.fn.exists(":FzfLua") ~= 0 then
   )
   keyset(
     "n",
+    "<leader>pgg",
+    fzf_lua.grep,
+    utils.mergeTables(opts, {
+      desc = "fzf-lua.grep()",
+    })
+  )
+  keyset(
+    "n",
+    "<leader>pgl",
+    fzf_lua.git_commits,
+    utils.mergeTables(opts, {
+      desc = "fzf-lua.git_commits()",
+    })
+  )
+  keyset(
+    "n",
+    "<leader>pgs",
+    fzf_lua.git_status,
+    utils.mergeTables(opts, {
+      desc = "fzf-lua.git_status()",
+    })
+  )
+  keyset(
+    "n",
     "<leader>ph",
     fzf_lua.highlights,
     utils.mergeTables(opts, {
@@ -192,6 +216,14 @@ if vim.fn.exists(":FzfLua") ~= 0 then
     fzf_lua.registers,
     utils.mergeTables(opts, {
       desc = "fzf-lua.registers()",
+    })
+  )
+  keyset(
+    "n",
+    "<leader>pt",
+    fzf_lua.builtin,
+    utils.mergeTables(opts, {
+      desc = "fzf-lua.builtin()",
     })
   )
 end
