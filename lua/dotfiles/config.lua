@@ -6,6 +6,7 @@ M.default_opts = {
   copilot = {
     enabled = false,
   },
+  fuzzy_finder = "telescope", -- fzf-lua / telescope
 }
 
 M.config = nil

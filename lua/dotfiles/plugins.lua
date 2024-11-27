@@ -154,6 +154,7 @@ M.plugins = {
   {
     "ibhagwan/fzf-lua",
     tags = { "default", "no-vscode", "tui" },
+    enabled = config.fuzzy_finder == "fzf-lua",
     config = function()
       utils.require("plugins.fzf-lua")
     end,
@@ -180,7 +181,7 @@ M.plugins = {
     tags = { "default" },
     branch = "0.1.x",
     dependencies = { "nvim-lua/plenary.nvim" },
-    enabled = false,
+    enabled = config.fuzzy_finder == "telescope",
     config = function()
       utils.require("plugins.telescope")
       bufnr = 0
