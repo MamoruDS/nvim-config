@@ -125,20 +125,6 @@ M.plugins = {
   },
 
   {
-    "github/copilot.vim",
-    tags = { "default", "ai", "no-vscode" },
-    enabled = config.plugins.copilot.enabled,
-    event = "InsertEnter",
-    cond = function()
-      return ((vim.fn.executable("node") == 1) or (vim.fn.empty(vim.g.copilot_node_command) == 0))
-        and vim.wo.diff ~= true
-    end,
-    init = function()
-      utils.require("plugins.copilot")
-    end,
-  },
-
-  {
     "folke/which-key.nvim",
     tags = { "default", "no-vscode", "tui" },
     event = "VeryLazy",
