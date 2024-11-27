@@ -1,4 +1,6 @@
 -- https://github.com/nvim-tree/nvim-tree.lua/blob/master/doc/nvim-tree-lua.txt
+local config = require("dotfiles.config").config
+
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
@@ -21,6 +23,35 @@ else
     ]])
 end
 
+local cfg_icons = {
+  git_placement = "after",
+  glyphs = {
+    git = {
+      deleted = "D",
+      ignored = "",
+      renamed = "R",
+      staged = "S",
+      unmerged = "",
+      unstaged = "M",
+      untracked = "U",
+    },
+  },
+}
+
+if not config.appearances.nerdfont then
+  cfg_icons.show = {
+    file = false,
+    folder = false,
+    folder_arrow = true,
+    git = true,
+    modified = false,
+  }
+  cfg_icons.glyphs.folder = {
+    arrow_closed = ">",
+    arrow_open = "v",
+  }
+end
+
 require("nvim-tree").setup({
   view = {
     float = {
@@ -40,34 +71,6 @@ require("nvim-tree").setup({
     full_name = true,
     highlight_git = true,
     highlight_opened_files = "none",
-    icons = {
-      git_placement = "after",
-      -- {{#if (eq use_nerdfont 0)}}
-      show = {
-        file = false,
-        folder = false,
-        folder_arrow = true,
-        git = true,
-        modified = false,
-      },
-      -- {{/if}}
-      glyphs = {
-        -- {{#if (eq use_nerdfont 0)}}
-        folder = {
-          arrow_closed = ">",
-          arrow_open = "v",
-        },
-        -- {{/if}}
-        git = {
-          deleted = "D",
-          ignored = "",
-          renamed = "R",
-          staged = "S",
-          unmerged = "",
-          unstaged = "M",
-          untracked = "U",
-        },
-      },
-    },
+    icons = cfg_icons,
   },
 })
