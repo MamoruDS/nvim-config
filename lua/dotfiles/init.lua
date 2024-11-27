@@ -1,20 +1,6 @@
 local utils = require("dotfiles.utils")
 
-local config = require("dotfiles.config")
--- TODO:
-config.setup({
-  appearances = {
-    -- {{#if (eq dark_mode 0)}}
-    dark_mode = false,
-    -- {{/if}}
-    -- {{#if (eq use_nerdfont 1)}}
-    nerdfont = true,
-    -- {{/if}}
-    -- {{#if (eq nvim_transparent_bg 1)}}
-    transparent_bg = true,
-    -- {{/if}}
-  },
-})
+require("dotfiles.config").setup({})
 
 utils.require("options")
 
