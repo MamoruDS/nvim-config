@@ -3,6 +3,10 @@ local M = {}
 local utils = require("dotfiles.utils")
 
 M.default_opts = {
+  appearances = {
+    dark_mode = true,
+    transparent_bg = false,
+  },
   plugins = {
     copilot = {
       enabled = false,
