@@ -127,7 +127,7 @@ M.plugins = {
   {
     "github/copilot.vim",
     tags = { "default", "ai", "no-vscode" },
-    enabled = config.copilot.enabled,
+    enabled = config.plugins.copilot.enabled,
     event = "InsertEnter",
     cond = function()
       return ((vim.fn.executable("node") == 1) or (vim.fn.empty(vim.g.copilot_node_command) == 0))
@@ -154,7 +154,7 @@ M.plugins = {
   {
     "ibhagwan/fzf-lua",
     tags = { "default", "no-vscode", "tui" },
-    enabled = config.fuzzy_finder == "fzf-lua",
+    enabled = config.plugins.fuzzy_finder == "fzf-lua",
     config = function()
       utils.require("plugins.fzf-lua")
     end,
@@ -181,7 +181,7 @@ M.plugins = {
     tags = { "default", "no-vscode", "tui" },
     branch = "0.1.x",
     dependencies = { "nvim-lua/plenary.nvim" },
-    enabled = config.fuzzy_finder == "telescope",
+    enabled = config.plugins.fuzzy_finder == "telescope",
     config = function()
       utils.require("plugins.telescope")
       bufnr = 0

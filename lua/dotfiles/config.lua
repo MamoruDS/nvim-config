@@ -3,10 +3,12 @@ local M = {}
 local utils = require("dotfiles.utils")
 
 M.default_opts = {
-  copilot = {
-    enabled = false,
+  plugins = {
+    copilot = {
+      enabled = false,
+    },
+    fuzzy_finder = "telescope", -- fzf-lua / telescope
   },
-  fuzzy_finder = "telescope", -- fzf-lua / telescope
 }
 
 M.config = nil
