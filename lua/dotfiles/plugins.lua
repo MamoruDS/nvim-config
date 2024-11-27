@@ -175,6 +175,18 @@ M.plugins = {
     end,
   },
 
+  {
+    "nvim-telescope/telescope.nvim",
+    tags = { "default" },
+    branch = "0.1.x",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    enabled = false,
+    config = function()
+      utils.require("plugins.telescope")
+      bufnr = 0
+    end,
+  },
+
   -- lsp
 
   {

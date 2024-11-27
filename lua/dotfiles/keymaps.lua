@@ -228,6 +228,119 @@ if vim.fn.exists(":FzfLua") ~= 0 then
   )
 end
 
+if vim.fn.exists(":Telescope") ~= 0 then
+  local telescope = require("telescope.builtin")
+  local telescope_diagnostic_current = function()
+    return telescope.diagnostics({ bufnr = 0 })
+  end
+  opts = { silent = true }
+  keyset(
+    "n",
+    "<leader>pb",
+    telescope.buffers,
+    utils.mergeTables(opts, {
+      desc = "telescope.buffers()",
+    })
+  )
+
+  keyset(
+    "n",
+    "<leader>pd",
+    -- telescope.diagnostics,:
+    telescope_diagnostic_current,
+    utils.mergeTables(opts, { desc = "telescope.diagnostics()" })
+  )
+  keyset(
+    "n",
+    "<leader>pf",
+    telescope.find_files,
+    utils.mergeTables(opts, {
+      desc = "telescope.find_files()",
+    })
+  )
+  keyset(
+    "n",
+    "<leader>pgg",
+    telescope.live_grep,
+    utils.mergeTables(opts, {
+      desc = "telescope.live_grep()",
+    })
+  )
+  keyset(
+    "n",
+    "<leader>pgl",
+    telescope.git_commits,
+    utils.mergeTables(opts, {
+      desc = "telescope.git_commits()",
+    })
+  )
+  keyset(
+    "n",
+    "<leader>pgs",
+    telescope.git_status,
+    utils.mergeTables(opts, {
+      desc = "telescope.git_status()",
+    })
+  )
+  keyset(
+    "n",
+    "<leader>ph",
+    telescope.highlights,
+    utils.mergeTables(opts, {
+      desc = "telescope.highlights()",
+    })
+  )
+  keyset(
+    "n",
+    "<leader>pk",
+    telescope.keymaps,
+    utils.mergeTables(opts, {
+      desc = "telescope.keymaps()",
+    })
+  )
+  keyset(
+    "n",
+    "<leader>pm",
+    telescope.help_tags,
+    utils.mergeTables(opts, {
+      desc = "telescope.help_tags()",
+    })
+  )
+  -- TODO: noice history
+  keyset(
+    "n",
+    "<leader>pp",
+    telescope.commands,
+    utils.mergeTables(opts, {
+      desc = "telescope.commands()",
+    })
+  )
+  keyset(
+    "n",
+    "<leader>pq",
+    telescope.command_history,
+    utils.mergeTables(opts, {
+      desc = "telescope.command_history()",
+    })
+  )
+  keyset(
+    "n",
+    "<leader>pr",
+    telescope.registers,
+    utils.mergeTables(opts, {
+      desc = "telescope.registers()",
+    })
+  )
+  keyset(
+    "n",
+    "<leader>pt",
+    telescope.builtin,
+    utils.mergeTables(opts, {
+      desc = "telescope.builtin()",
+    })
+  )
+end
+
 -- if 0 then
 --   os.exit(11)
 -- end
