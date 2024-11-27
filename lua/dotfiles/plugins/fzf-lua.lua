@@ -30,6 +30,7 @@ require("fzf-lua").setup({
     -- ["--pointer"] = "●",
     ["--info"] = "right",
   },
+  winopts = { width = 0.85, height = 0.85 },
 })
 
 vim.api.nvim_set_hl(0, "FzfLuaBorder", { link = "FloatBorder" })
