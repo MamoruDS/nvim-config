@@ -188,6 +188,11 @@ M.plugins = {
     end,
   },
 
+  {
+    "sindrets/diffview.nvim",
+    tags = { "default", "no-vscode", "tui" },
+  },
+
   -- lsp
 
   {
