@@ -78,7 +78,7 @@ M.plugins = {
     "nvim-tree/nvim-web-devicons",
     tags = { "default", "no-vscode", "tui" },
     cond = function()
-      return vim.g.use_nerdfont
+      return config.appearances.use_nerdfont
     end,
     config = function()
       utils.require("plugins.nvim-web-devicons")

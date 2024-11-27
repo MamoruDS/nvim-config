@@ -5,6 +5,7 @@ local utils = require("dotfiles.utils")
 M.default_opts = {
   appearances = {
     dark_mode = true,
+    nerdfont = false,
     transparent_bg = false,
   },
   plugins = {

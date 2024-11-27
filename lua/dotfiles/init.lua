@@ -7,6 +7,9 @@ config.setup({
     -- {{#if (eq dark_mode 0)}}
     dark_mode = false,
     -- {{/if}}
+    -- {{#if (eq use_nerdfont 1)}}
+    use_nerdfont = true,
+    -- {{/if}}
     -- {{#if (eq nvim_transparent_bg 1)}}
     transparent_bg = true,
     -- {{/if}}
