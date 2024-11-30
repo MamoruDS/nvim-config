@@ -21,5 +21,8 @@ vim.opt.termguicolors = true
 vim.g.notify_timeout = 5000
 
 if vim.g.vscode then
-    table.insert(config.plugins.load_tags.negative, "no-vscode")
+  table.insert(config.plugins.load_tags.negative, "no-vscode")
+
+  local vscode = require("vscode")
+  vim.notify = vscode.notify
 end
