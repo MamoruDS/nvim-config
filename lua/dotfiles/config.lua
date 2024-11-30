@@ -9,6 +9,10 @@ M.default_opts = {
     transparent_bg = false,
   },
   plugins = {
+    load_tags = {
+      positive = { "default" },
+      negative = {},
+    },
     fuzzy_finder = "telescope", -- fzf-lua / telescope
   },
 }

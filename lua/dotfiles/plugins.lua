@@ -234,16 +234,8 @@ function M.load_plugins(plugins, pos_tags, neg_tags)
   lazy.setup(loads)
 end
 
-M.default_opts = {
-  tags = {
-    positive = { "default" },
-    negative = {},
-  },
-}
-
-function M.setup(opts)
-  opts = utils.mergeTables(M.default_opts, opts)
-  M.load_plugins(M.plugins, opts.tags.positive, opts.tags.negative)
+function M.setup()
+  M.load_plugins(M.plugins, config.plugins.load_tags.positive, config.plugins.load_tags.negative)
 end
 
 return M
