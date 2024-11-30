@@ -8,12 +8,8 @@ local neg_tags = {}
 if vim.g.vscode then
   table.insert(neg_tags, "no-vscode")
 end
-local plugins = require("dotfiles.plugins")
-plugins.setup({
-  tags = {
-    negative = neg_tags,
-  },
-})
+
+require("dotfiles.plugins").setup()
 
 utils.require("keymaps")
 

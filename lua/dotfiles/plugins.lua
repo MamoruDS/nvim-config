@@ -212,22 +212,31 @@ M.plugins = {
   },
 }
 
-function M.load_plugins(plugins, pos_tags, neg_tags)
+local function filter_plugin(plugin, pos_tags, neg_tags)
+  local isLoad = false
+  for _, tag in ipairs(plugin.tags) do
+    if utils.isInTable(neg_tags, tag) then
+      isLoad = false
+      break
+    end
+    if utils.isInTable(pos_tags, tag) then
+      isLoad = true
+    end
+  end
+  return isLoad
+end
+
+function M.load_plugins(plugins, extra_plugins, pos_tags, neg_tags)
   local lazy = require("dotfiles.plugins.lazy")
   lazy.bootstrap()
   local loads = {}
   for _, plugin in ipairs(plugins) do
-    local load = false
-    for _, tag in ipairs(plugin.tags) do
-      if utils.isInTable(neg_tags, tag) then
-        load = false
-        break
-      end
-      if utils.isInTable(pos_tags, tag) then
-        load = true
-      end
+    if filter_plugin(plugin, pos_tags, neg_tags) then
+      table.insert(loads, plugin)
     end
-    if load then
+  end
+  for _, plugin in ipairs(extra_plugins) do
+    if filter_plugin(plugin, pos_tags, neg_tags) then
       table.insert(loads, plugin)
     end
   end
@@ -235,7 +244,12 @@ function M.load_plugins(plugins, pos_tags, neg_tags)
 end
 
 function M.setup()
-  M.load_plugins(M.plugins, config.plugins.load_tags.positive, config.plugins.load_tags.negative)
+  M.load_plugins(
+    M.plugins,
+    config.plugins.extra_plugins,
+    config.plugins.load_tags.positive,
+    config.plugins.load_tags.negative
+  )
 end
 
 return M

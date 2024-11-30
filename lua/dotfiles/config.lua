@@ -13,6 +13,9 @@ M.default_opts = {
       positive = { "default" },
       negative = {},
     },
+    extra_plugins = {
+      -- ! tags field is required for per plugin
+    },
     fuzzy_finder = "telescope", -- fzf-lua / telescope
   },
 }
