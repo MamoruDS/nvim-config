@@ -103,16 +103,6 @@ if vim.fn.exists(":ConformInfo") ~= 0 then
   keyset("n", "<leader>tc", "<cmd>ConformInfo<CR>", opts)
 end
 
-if vim.fn.exists(":Copilot") ~= 0 then
-  opts = {
-    noremap = true,
-    silent = true,
-    expr = true,
-    replace_keycodes = false,
-  }
-  keyset("i", "<C-t>", "copilot#Accept('<CR>')", opts)
-end
-
 keyset({ "n", "v" }, "<C-a>", function()
   require("dial.map").manipulate("increment", "normal")
 end)

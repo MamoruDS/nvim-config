@@ -9,9 +9,6 @@ M.default_opts = {
     transparent_bg = false,
   },
   plugins = {
-    copilot = {
-      enabled = false,
-    },
     fuzzy_finder = "telescope", -- fzf-lua / telescope
   },
 }
