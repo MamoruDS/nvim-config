@@ -23,7 +23,7 @@ M.default_opts = {
 M.config = nil
 
 function M.setup(opts)
-  M.config = utils.mergeTables(M.default_opts, opts)
+  M.config = utils.merge_tables(M.default_opts, opts)
 end
 
 return M

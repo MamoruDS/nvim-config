@@ -226,11 +226,11 @@ M.plugins = {
 local function filter_plugin(plugin, pos_tags, neg_tags)
   local isLoad = false
   for _, tag in ipairs(plugin.tags) do
-    if utils.isInTable(neg_tags, tag) then
+    if utils.table_has(neg_tags, tag) then
       isLoad = false
       break
     end
-    if utils.isInTable(pos_tags, tag) then
+    if utils.table_has(pos_tags, tag) then
       isLoad = true
     end
   end

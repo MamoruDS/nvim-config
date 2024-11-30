@@ -22,7 +22,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
       "n",
       "gD",
       vim.lsp.buf.declaration,
-      utils.mergeTables(opts, {
+      utils.merge_tables(opts, {
         desc = "vim.lsp.buf.declaration()",
       })
     )
@@ -30,7 +30,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
       "n",
       "gd",
       vim.lsp.buf.definition,
-      utils.mergeTables(opts, {
+      utils.merge_tables(opts, {
         desc = "vim.lsp.buf.definition()",
       })
     )
@@ -38,7 +38,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
       "n",
       "K",
       vim.lsp.buf.hover,
-      utils.mergeTables(opts, {
+      utils.merge_tables(opts, {
         desc = "vim.lsp.buf.hover()",
       })
     )
@@ -46,7 +46,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
       "n",
       "gi",
       vim.lsp.buf.implementation,
-      utils.mergeTables(opts, {
+      utils.merge_tables(opts, {
         desc = "vim.lsp.buf.implementation()",
       })
     )
@@ -54,7 +54,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
       "n",
       "<C-k>",
       vim.lsp.buf.signature_help,
-      utils.mergeTables(opts, {
+      utils.merge_tables(opts, {
         desc = "vim.lsp.buf.signature_help()",
       })
     )
@@ -67,7 +67,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
       "n",
       "<space>D",
       vim.lsp.buf.type_definition,
-      utils.mergeTables(opts, {
+      utils.merge_tables(opts, {
         desc = "vim.lsp.buf.type_definition()",
       })
     )
@@ -75,7 +75,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
       "n",
       "<space>rn",
       vim.lsp.buf.rename,
-      utils.mergeTables(opts, {
+      utils.merge_tables(opts, {
         desc = "()",
       })
     )
@@ -83,7 +83,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
       { "n", "v" },
       "<space>ca",
       vim.lsp.buf.code_action,
-      utils.mergeTables(opts, {
+      utils.merge_tables(opts, {
         desc = "vim.lsp.buf.code_action()",
       })
     )
@@ -91,7 +91,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
       "n",
       "gr",
       vim.lsp.buf.references,
-      utils.mergeTables(opts, {
+      utils.merge_tables(opts, {
         desc = "vim.lsp.buf.references()",
       })
     )
@@ -117,7 +117,7 @@ if vim.fn.exists(":FzfLua") ~= 0 then
     "n",
     "<leader>pb",
     fzf_lua.buffers,
-    utils.mergeTables(opts, {
+    utils.merge_tables(opts, {
       desc = "fzf-lua.buffers()",
     })
   )
@@ -125,13 +125,13 @@ if vim.fn.exists(":FzfLua") ~= 0 then
     "n",
     "<leader>pd",
     fzf_lua.diagnostics_document,
-    utils.mergeTables(opts, { desc = "fzf-lua.diagnostics_document()" })
+    utils.merge_tables(opts, { desc = "fzf-lua.diagnostics_document()" })
   )
   keyset(
     "n",
     "<leader>pf",
     fzf_lua.files,
-    utils.mergeTables(opts, {
+    utils.merge_tables(opts, {
       desc = "fzf-lua.files()",
     })
   )
@@ -139,7 +139,7 @@ if vim.fn.exists(":FzfLua") ~= 0 then
     "n",
     "<leader>pgg",
     fzf_lua.grep,
-    utils.mergeTables(opts, {
+    utils.merge_tables(opts, {
       desc = "fzf-lua.grep()",
     })
   )
@@ -147,7 +147,7 @@ if vim.fn.exists(":FzfLua") ~= 0 then
     "n",
     "<leader>pgl",
     fzf_lua.git_commits,
-    utils.mergeTables(opts, {
+    utils.merge_tables(opts, {
       desc = "fzf-lua.git_commits()",
     })
   )
@@ -155,7 +155,7 @@ if vim.fn.exists(":FzfLua") ~= 0 then
     "n",
     "<leader>pgs",
     fzf_lua.git_status,
-    utils.mergeTables(opts, {
+    utils.merge_tables(opts, {
       desc = "fzf-lua.git_status()",
     })
   )
@@ -163,7 +163,7 @@ if vim.fn.exists(":FzfLua") ~= 0 then
     "n",
     "<leader>ph",
     fzf_lua.highlights,
-    utils.mergeTables(opts, {
+    utils.merge_tables(opts, {
       desc = "fzf-lua.highlights()",
     })
   )
@@ -171,7 +171,7 @@ if vim.fn.exists(":FzfLua") ~= 0 then
     "n",
     "<leader>pk",
     fzf_lua.keymaps,
-    utils.mergeTables(opts, {
+    utils.merge_tables(opts, {
       desc = "fzf-lua.keymaps()",
     })
   )
@@ -179,7 +179,7 @@ if vim.fn.exists(":FzfLua") ~= 0 then
     "n",
     "<leader>pm",
     fzf_lua.help_tags,
-    utils.mergeTables(opts, {
+    utils.merge_tables(opts, {
       desc = "fzf-lua.help_tags()",
     })
   )
@@ -188,7 +188,7 @@ if vim.fn.exists(":FzfLua") ~= 0 then
     "n",
     "<leader>pp",
     fzf_lua.commands,
-    utils.mergeTables(opts, {
+    utils.merge_tables(opts, {
       desc = "fzf-lua.commands()",
     })
   )
@@ -196,7 +196,7 @@ if vim.fn.exists(":FzfLua") ~= 0 then
     "n",
     "<leader>pq",
     fzf_lua.command_history,
-    utils.mergeTables(opts, {
+    utils.merge_tables(opts, {
       desc = "fzf-lua.command_history()",
     })
   )
@@ -204,7 +204,7 @@ if vim.fn.exists(":FzfLua") ~= 0 then
     "n",
     "<leader>pr",
     fzf_lua.registers,
-    utils.mergeTables(opts, {
+    utils.merge_tables(opts, {
       desc = "fzf-lua.registers()",
     })
   )
@@ -212,7 +212,7 @@ if vim.fn.exists(":FzfLua") ~= 0 then
     "n",
     "<leader>pt",
     fzf_lua.builtin,
-    utils.mergeTables(opts, {
+    utils.merge_tables(opts, {
       desc = "fzf-lua.builtin()",
     })
   )
@@ -228,7 +228,7 @@ if vim.fn.exists(":Telescope") ~= 0 then
     "n",
     "<leader>pb",
     telescope.buffers,
-    utils.mergeTables(opts, {
+    utils.merge_tables(opts, {
       desc = "telescope.buffers()",
     })
   )
@@ -238,13 +238,13 @@ if vim.fn.exists(":Telescope") ~= 0 then
     "<leader>pd",
     -- telescope.diagnostics,:
     telescope_diagnostic_current,
-    utils.mergeTables(opts, { desc = "telescope.diagnostics()" })
+    utils.merge_tables(opts, { desc = "telescope.diagnostics()" })
   )
   keyset(
     "n",
     "<leader>pf",
     telescope.find_files,
-    utils.mergeTables(opts, {
+    utils.merge_tables(opts, {
       desc = "telescope.find_files()",
     })
   )
@@ -252,7 +252,7 @@ if vim.fn.exists(":Telescope") ~= 0 then
     "n",
     "<leader>pgg",
     telescope.live_grep,
-    utils.mergeTables(opts, {
+    utils.merge_tables(opts, {
       desc = "telescope.live_grep()",
     })
   )
@@ -260,7 +260,7 @@ if vim.fn.exists(":Telescope") ~= 0 then
     "n",
     "<leader>pgl",
     telescope.git_commits,
-    utils.mergeTables(opts, {
+    utils.merge_tables(opts, {
       desc = "telescope.git_commits()",
     })
   )
@@ -268,7 +268,7 @@ if vim.fn.exists(":Telescope") ~= 0 then
     "n",
     "<leader>pgs",
     telescope.git_status,
-    utils.mergeTables(opts, {
+    utils.merge_tables(opts, {
       desc = "telescope.git_status()",
     })
   )
@@ -276,7 +276,7 @@ if vim.fn.exists(":Telescope") ~= 0 then
     "n",
     "<leader>ph",
     telescope.highlights,
-    utils.mergeTables(opts, {
+    utils.merge_tables(opts, {
       desc = "telescope.highlights()",
     })
   )
@@ -284,7 +284,7 @@ if vim.fn.exists(":Telescope") ~= 0 then
     "n",
     "<leader>pk",
     telescope.keymaps,
-    utils.mergeTables(opts, {
+    utils.merge_tables(opts, {
       desc = "telescope.keymaps()",
     })
   )
@@ -292,7 +292,7 @@ if vim.fn.exists(":Telescope") ~= 0 then
     "n",
     "<leader>pm",
     telescope.help_tags,
-    utils.mergeTables(opts, {
+    utils.merge_tables(opts, {
       desc = "telescope.help_tags()",
     })
   )
@@ -301,7 +301,7 @@ if vim.fn.exists(":Telescope") ~= 0 then
     "n",
     "<leader>pp",
     telescope.commands,
-    utils.mergeTables(opts, {
+    utils.merge_tables(opts, {
       desc = "telescope.commands()",
     })
   )
@@ -309,7 +309,7 @@ if vim.fn.exists(":Telescope") ~= 0 then
     "n",
     "<leader>pq",
     telescope.command_history,
-    utils.mergeTables(opts, {
+    utils.merge_tables(opts, {
       desc = "telescope.command_history()",
     })
   )
@@ -317,7 +317,7 @@ if vim.fn.exists(":Telescope") ~= 0 then
     "n",
     "<leader>pr",
     telescope.registers,
-    utils.mergeTables(opts, {
+    utils.merge_tables(opts, {
       desc = "telescope.registers()",
     })
   )
@@ -325,7 +325,7 @@ if vim.fn.exists(":Telescope") ~= 0 then
     "n",
     "<leader>pt",
     telescope.builtin,
-    utils.mergeTables(opts, {
+    utils.merge_tables(opts, {
       desc = "telescope.builtin()",
     })
   )

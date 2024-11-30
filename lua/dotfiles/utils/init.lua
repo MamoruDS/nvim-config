@@ -2,7 +2,7 @@ local M = {}
 
 M.require = require("dotfiles.utils.require")
 
-M.isInTable = function(tbl, value)
+M.table_has = function(tbl, value)
   for _, v in ipairs(tbl) do
     if v == value then
       return true
@@ -11,7 +11,7 @@ M.isInTable = function(tbl, value)
   return false
 end
 
-M.mergeTables = function(t1, t2)
+M.merge_tables = function(t1, t2)
   local function deepMerge(target, source)
     for k, v in pairs(source) do
       if type(v) == "table" and type(target[k]) == "table" then
