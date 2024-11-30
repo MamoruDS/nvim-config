@@ -179,6 +179,17 @@ M.plugins = {
     tags = { "default", "no-vscode", "tui" },
   },
 
+  {
+    "romgrk/barbar.nvim",
+    tags = { "default", "tui" },
+    init = function()
+      vim.g.barbar_auto_setup = false
+    end,
+    config = function()
+      utils.require("plugins.barbar")
+    end,
+  },
+
   -- lsp
 
   {
