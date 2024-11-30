@@ -2,6 +2,13 @@ local M = {}
 
 M.require = require("dotfiles.utils.require")
 
+M.executable = function(name)
+  if vim.fn.executable(name) > 0 then
+    return true
+  end
+  return false
+end
+
 M.merge_tables = function(t1, t2)
   local function deepMerge(target, source)
     for k, v in pairs(source) do
