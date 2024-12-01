@@ -45,3 +45,21 @@ lspconfig.lua_ls.setup({
     Lua = {},
   },
 })
+
+lspconfig.pyright.setup({
+  on_attach = on_attach,
+  settings = {
+    pyright = {
+      autoImportCompletion = true,
+      disableTaggedHints = false,
+    },
+    python = {
+      analysis = {
+        autoSearchPaths = true,
+        -- diagnosticMode = "openFilesOnly",
+        typeCheckingMode = "basic",
+        useLibraryCodeForTypes = true,
+      },
+    },
+  },
+})
