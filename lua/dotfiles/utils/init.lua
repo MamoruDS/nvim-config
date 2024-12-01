@@ -10,17 +10,7 @@ M.executable = function(name)
 end
 
 M.merge_tables = function(t1, t2)
-  local function deepMerge(target, source)
-    for k, v in pairs(source) do
-      if type(v) == "table" and type(target[k]) == "table" then
-        deepMerge(target[k], v)
-      else
-        target[k] = v
-      end
-    end
-  end
-  deepMerge(t1, t2)
-  return t1
+  return vim.tbl_deep_extend("force", t1, t2)
 end
 
 M.table_has = function(tbl, value)
