@@ -24,6 +24,20 @@ local on_attach = function(client, bufnr)
 end
 
 local lsp_configs = {
+  bashls = {
+    config = {
+      on_attach = on_attach,
+    },
+    setup = lspconfig.bashls.setup,
+  },
+
+  jsonls = {
+    config = {
+      on_attach = on_attach,
+    },
+    setup = lspconfig.jsonls.setup,
+  },
+
   lua_ls = {
     config = {
       on_attach = on_attach,
