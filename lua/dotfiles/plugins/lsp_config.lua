@@ -31,6 +31,14 @@ local lsp_configs = {
     setup = lspconfig.bashls.setup,
   },
 
+  biome = {
+    config = {
+      on_attach = on_attach,
+      single_file_support = true,
+    },
+    setup = lspconfig.biome.setup
+  },
+
   jsonls = {
     config = {
       on_attach = on_attach,
