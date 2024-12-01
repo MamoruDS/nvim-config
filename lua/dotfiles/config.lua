@@ -8,6 +8,7 @@ M.default_opts = {
     nerdfont = false,
     transparent_bg = false,
   },
+  lsp_clients = {},
   plugins = {
     load_tags = {
       positive = { "default" },
