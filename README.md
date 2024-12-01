@@ -14,7 +14,7 @@ It is recommended to define your changes in `nvim/lua/local/options.lua`:
 ```lua
 local config = require("dotfiles.config").config
 
-config.lsp_client = {
+config.lsp_clients = {
   nixd = {
     config = {
       settings = {
