@@ -190,6 +190,14 @@ M.plugins = {
     end,
   },
 
+  {
+    "tpope/vim-fugitive",
+    tags = { "default" },
+    config = function()
+      utils.require("plugins.fugitive")
+    end,
+  },
+
   -- lsp
 
   {
