@@ -36,7 +36,7 @@ local lsp_configs = {
       on_attach = on_attach,
       single_file_support = true,
     },
-    setup = lspconfig.biome.setup
+    setup = lspconfig.biome.setup,
   },
 
   jsonls = {
