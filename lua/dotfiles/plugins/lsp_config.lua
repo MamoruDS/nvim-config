@@ -113,6 +113,16 @@ local lsp_configs = {
     },
     setup = lspconfig.pyright.setup,
   },
+
+  ruff = {
+    config = {
+      init_options = {
+        settings = {},
+      },
+      on_attach = on_attach,
+    },
+    setup = lspconfig.ruff.setup,
+  },
 }
 
 for name, client in pairs(utils.merge_tables(lsp_configs, config.lsp_clients)) do
