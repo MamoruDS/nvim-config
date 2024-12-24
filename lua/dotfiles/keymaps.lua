@@ -8,6 +8,8 @@ local opts = {
   -- replace_keycodes = false,
 }
 
+keyset("n", "<leader>;", ":", { noremap = true, silent = false })
+
 keyset("n", "<leader>tl", "<cmd>LspInfo<CR>", opts)
 
 keyset("n", "<space>e", vim.diagnostic.open_float, { desc = "vim.diagnostic.open_float()" })
