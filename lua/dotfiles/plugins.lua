@@ -170,7 +170,6 @@ M.plugins = {
     enabled = config.plugins.fuzzy_finder == "telescope",
     config = function()
       utils.require("plugins.telescope")
-      bufnr = 0
     end,
   },
 
