@@ -179,17 +179,6 @@ M.plugins = {
   },
 
   {
-    "romgrk/barbar.nvim",
-    tags = { "default", "tui" },
-    init = function()
-      vim.g.barbar_auto_setup = false
-    end,
-    config = function()
-      utils.require("plugins.barbar")
-    end,
-  },
-
-  {
     "tpope/vim-fugitive",
     tags = { "default" },
     config = function()
