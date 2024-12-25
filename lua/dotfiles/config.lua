@@ -68,4 +68,9 @@ function M.setup(opts)
   M.config = utils.merge_tables(M.default_opts, opts)
 end
 
+vim.api.nvim_create_user_command("DotCfgToggleFormat", function()
+  M.config.misc.format.enable = not M.config.misc.format.enable
+  vim.notify("Format on/after save " .. (M.config.misc.format.enable and "enabled" or "disabled") .. ".")
+end, { desc = "Toggle format on/after save." })
+
 return M
