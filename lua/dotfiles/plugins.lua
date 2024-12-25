@@ -233,16 +233,20 @@ M.plugins = {
 
 local function filter_plugin(plugin, pos_tags, neg_tags)
   local isLoad = false
-  for _, tag in ipairs(plugin.tags) do
-    if utils.table_has(neg_tags, tag) then
-      isLoad = false
-      break
+  if plugin.tags then
+    for _, tag in ipairs(plugin.tags) do
+      if utils.table_has(neg_tags, tag) then
+        isLoad = false
+        break
+      end
+      if utils.table_has(pos_tags, tag) then
+        isLoad = true
+      end
     end
-    if utils.table_has(pos_tags, tag) then
-      isLoad = true
-    end
+    return isLoad
   end
-  return isLoad
+  vim.notify("Field tags is missing for plugin " .. plugin[1] .. ", skipping ...", vim.log.levels.ERROR)
+  return false
 end
 
 function M.load_plugins(plugins, extra_plugins, pos_tags, neg_tags)
