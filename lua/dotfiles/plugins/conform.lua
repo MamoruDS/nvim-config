@@ -1,16 +1,20 @@
 local config = require("dotfiles.config").config
 
-local format_after_save = nil
-local format_on_save = nil
+local format_after_save = function()
+  if config.misc.format.enable and config.misc.format.policy == "after_save" then
+    return {}
+  else
+    return nil
+  end
+end
 
-if config.misc.format.enable then
-  if config.misc.format.policy == "on_save" then
-    format_on_save = {
+local format_on_save = function()
+  if config.misc.format.enable and config.misc.format.policy == "on_save" then
+    return {
       timeout_ms = 500,
     }
-  elseif config.misc.format.policy == "after_save" then
-    -- FIXME:
-    format_after_save = {}
+  else
+    return nil
   end
 end
 
