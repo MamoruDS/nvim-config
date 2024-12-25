@@ -1,5 +1,7 @@
 local ref_theme = require("lualine.themes.auto")
 
+local config = require("dotfiles.config").config
+
 ref_theme.normal.c.bg = nil
 ref_theme.insert.c.bg = nil
 ref_theme.visual.c.bg = nil
@@ -8,6 +10,7 @@ ref_theme.command.c.bg = nil
 ref_theme.inactive.c.bg = nil
 
 -- TODO: mod
+--- @return string[]
 local function get_available_formatters()
   local bufnr = vim.api.nvim_get_current_buf()
   local available = {}
@@ -81,12 +84,16 @@ require("lualine").setup({
       {
         function()
           local formatters = get_available_formatters()
+          local fmt_indicator = ""
           if #formatters > 0 then
-            -- return "fmt:" .. table.concat(formatters, ",")
-            return table.concat(formatters, ",")
+            if not config.misc.format.enable then
+              fmt_indicator = fmt_indicator .. "[x]"
+            end
+            fmt_indicator = fmt_indicator .. table.concat(formatters, ",")
           else
-            return ""
+            fmt_indicator = fmt_indicator .. "[-]?"
           end
+          return fmt_indicator
         end,
         event = "BufEnter",
       },
