@@ -90,8 +90,6 @@ require("lualine").setup({
               fmt_indicator = fmt_indicator .. "[x]"
             end
             fmt_indicator = fmt_indicator .. table.concat(formatters, ",")
-          else
-            fmt_indicator = fmt_indicator .. "[-]?"
           end
           return fmt_indicator
         end,
