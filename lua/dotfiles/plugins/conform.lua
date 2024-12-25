@@ -1,39 +1,23 @@
--- https://github.com/stevearc/conform.nvim/issues/250#issuecomment-1879773592
-local function open_progress_win()
-  local bufnr = vim.api.nvim_create_buf(false, true)
-  vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, { "Formatting..." }) -- TODO:
-  local winid = vim.api.nvim_open_win(bufnr, false, {
-    relative = "editor",
-    anchor = "SE",
-    row = vim.o.lines - 2,
-    col = vim.o.columns,
-    width = 20,
-    height = 1,
-    style = "minimal",
-    border = "rounded",
-    focusable = false,
-    noautocmd = true,
-  })
-  vim.bo[bufnr].bufhidden = "wipe"
-  return winid
-end
+local config = require("dotfiles.config").config
 
-local function format()
-  require("conform").format({
-    async = true,
-    quiet = true,
-    lsp_fallback = true,
-  }, function(err)
-    local winid = open_progress_win()
-    vim.api.nvim_win_close(winid, true)
-    if err then
-      -- TODO: detailed error message
-      vim.notify("conform: failed to format", vim.log.levels.WARN)
-    end
-  end)
+local format_after_save = nil
+local format_on_save = nil
+
+if config.misc.format.enable then
+  if config.misc.format.policy == "on_save" then
+    format_on_save = {
+      timeout_ms = 500,
+    }
+  elseif config.misc.format.policy == "after_save" then
+    -- FIXME:
+    format_after_save = {}
+  end
 end
 
 require("conform").setup({
+  default_format_opts = {
+    lsp_format = "fallback",
+  },
   formatters_by_ft = {
     bash = { "shfmt" },
     css = { "prettierd", "prettier", stop_after_first = true },
@@ -54,6 +38,7 @@ require("conform").setup({
     yaml = { "yq", "prettierd", "prettier", stop_after_first = true },
     zig = { "zigfmt" },
   },
+  format_after_save = format_after_save,
+  format_on_save = format_on_save,
   log_level = vim.log.levels.WARN,
-  format_after_save = format,
 })

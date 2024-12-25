@@ -5,6 +5,7 @@ local utils = require("dotfiles.utils")
 --- @class dotfiles.config.default_opts
 --- @field appearances dotfiles.config.appearances
 --- @field lsp_clients {[string]: dotfiles.config.lsp_client}
+--- @field misc dotfiles.config.misc
 --- @field plugins dotfiles.config.plugins
 M.default_opts = {
   appearances = {
@@ -13,6 +14,12 @@ M.default_opts = {
     transparent_bg = false,
   },
   lsp_clients = {},
+  misc = {
+    format = {
+      enable = true,
+      policy = "after_save",
+    },
+  },
   plugins = {
     load_tags = {
       positive = { "default" },
@@ -34,6 +41,13 @@ M.default_opts = {
 --- @field setup? function
 --- @field config? table
 
+--- @class dotfiles.config.misc.format
+--- @field enable? boolean
+--- @field policy? "after_save"|"on_save"
+
+--- @class dotfiles.config.misc
+--- @field format? dotfiles.config.misc.format
+
 --- @class dotfiles.config.plugins.load_tags
 --- @field positive? string[]
 --- @field negative? string[]
@@ -46,6 +60,7 @@ M.default_opts = {
 --- @class dotfiles.config
 --- @field appearances? dotfiles.config.appearances
 --- @field lsp_clients? {[string]: dotfiles.config.lsp_client}
+--- @field misc? dotfiles.config.misc
 --- @field plugins? dotfiles.config.plugins
 M.config = {}
 
