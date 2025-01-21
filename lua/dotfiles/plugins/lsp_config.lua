@@ -123,6 +123,13 @@ local lsp_configs = {
     },
     setup = lspconfig.ruff.setup,
   },
+
+  ts_ls = {
+    config = {
+      on_attach = on_attach,
+    },
+    setup = lspconfig.ts_ls.setup,
+  },
 }
 
 for name, client in pairs(utils.merge_tables(lsp_configs, config.lsp_clients)) do
