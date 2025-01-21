@@ -124,6 +124,13 @@ local lsp_configs = {
     setup = lspconfig.ruff.setup,
   },
 
+  taplo = {
+    config = {
+      on_attach = on_attach,
+    },
+    setup = lspconfig.taplo.setup,
+  },
+
   ts_ls = {
     config = {
       on_attach = on_attach,
