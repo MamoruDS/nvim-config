@@ -352,6 +352,23 @@ if vim.fn.exists(":Noice") ~= 0 then
   keyset("n", "<leader>tn", "<cmd>Noice history<CR>", opts)
 end
 
+keyset(
+  "n",
+  "<leader>ss",
+  "<cmd>mkssesion!<CR>",
+  utils.merge_tables(opts, {
+    desc = "session: save",
+  })
+)
+keyset(
+  "n",
+  "<leader>sl",
+  "<cmd>source Session.vim<CR>",
+  utils.merge_tables(opts, {
+    desc = "session: load",
+  })
+)
+
 if vim.g.vscode then
   -- TODO:
   opts = { silent = true }
