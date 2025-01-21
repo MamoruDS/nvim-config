@@ -186,6 +186,16 @@ M.plugins = {
     end,
   },
 
+  {
+    "nanozuki/tabby.nvim",
+    tags = { "default", "tui" },
+    event = "VimEnter",
+    dependencies = "nvim-tree/nvim-web-devicons",
+    config = function()
+      utils.require("plugins.tabby")
+    end,
+  },
+
   -- lsp
 
   {
