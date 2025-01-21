@@ -12,6 +12,27 @@ local bg = function(color)
   return config.appearances.transparent_bg and "none" or color
 end
 
+local hl_apply_nvimtree = function()
+  if vim.opt.background == "dark" then
+    vim.cmd([[
+        hi NvimTreeFolderIcon   guifg=#90a4ae
+        "
+        hi NvimTreeNormal           guifg=#adbac7
+        hi NvimTreeFolderName       guifg=#adbac7
+        hi NvimTreeOpenedFolderName guifg=#adbac7
+        hi NvimTreeGitIgnored       guifg=#535b63
+        hi link NvimTreeEmptyFolderName NvimTreeGitIgnored
+    ]])
+  else
+    vim.cmd([[
+        hi NvimTreeFolderIcon   guifg=#90a4ae
+        "
+        hi NvimTreeGitIgnored       guifg=#b1bac4
+        hi link NvimTreeEmptyFolderName NvimTreeGitIgnored
+    ]])
+  end
+end
+
 local hl_apply_tabline = function()
   local spec = require("github-theme.spec").load(vim.g.colors_name)
   local p = spec.palette
@@ -33,10 +54,14 @@ local hl_apply_tabline = function()
 end
 
 function M.apply()
+  hl_apply_nvimtree()
   hl_apply_tabline()
 
   if vim.opt.background == "dark" then
     vim.cmd([[
+        hi LineNr       ctermbg=None    ctermfg=240 guifg=#5d5f61
+        hi CursorLine   ctermbg=8       guibg=#292e36
+
         hi FloatBorder  ctermfg=8       guifg=#4f5661
         hi Search       guibg=#867647
         hi VertSplit    ctermfg=8       guifg=#4f5661

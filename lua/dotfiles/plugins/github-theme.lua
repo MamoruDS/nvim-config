@@ -18,8 +18,6 @@ require("github-theme").setup({
 
 if config.appearances.dark_mode then
   vim.cmd([[
-      hi LineNr       ctermbg=None    ctermfg=240 guifg=#5d5f61
-      hi CursorLine   ctermbg=8       guibg=#292e36
       colorscheme github_dark_tritanopia
   ]])
 else
