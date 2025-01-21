@@ -342,9 +342,9 @@ if vim.fn.exists(":NvimTreeToggle") ~= 0 then
   keyset("n", "<leader>te", "<cmd>NvimTreeToggle<CR>", opts)
 end
 
-if vim.fn.exists(":Mason") ~= 0 then
+if vim.fn.exists(":NvimTreeToggle") ~= 0 then
   opts = { silent = true }
-  keyset("n", "<leader>tm", "<cmd>Mason<CR>", opts)
+  keyset("n", "<leader>te", "<cmd>NvimTreeToggle<CR>", opts)
 end
 
 if vim.fn.exists(":Noice") ~= 0 then
