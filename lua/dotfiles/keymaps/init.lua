@@ -20,13 +20,6 @@ if vim.fn.exists(":ConformInfo") ~= 0 then
   keyset("n", "<leader>tc", "<cmd>ConformInfo<CR>", opts)
 end
 
-keyset({ "n", "v" }, "<C-a>", function()
-  require("dial.map").manipulate("increment", "normal")
-end)
-keyset({ "n", "v" }, "<C-x>", function()
-  require("dial.map").manipulate("decrement", "normal")
-end)
-
 if vim.fn.exists(":NvimTreeToggle") ~= 0 then
   opts = { silent = true }
   keyset("n", "<leader>te", "<cmd>NvimTreeToggle<CR>", opts)
@@ -57,6 +50,7 @@ keyset(
 require("dotfiles.keymaps.presets.buffer").setup()
 require("dotfiles.keymaps.presets.lsp").setup()
 
+require("dotfiles.keymaps.presets.plugin-dial").setup()
 require("dotfiles.keymaps.presets.plugin-fzflua").setup()
 require("dotfiles.keymaps.presets.plugin-telescope").setup()
 require("dotfiles.keymaps.presets.plugin-vscode").setup()
