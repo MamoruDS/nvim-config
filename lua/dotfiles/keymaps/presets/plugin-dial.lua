@@ -1,7 +1,5 @@
 local M = {}
 
-local utils = require("dotfiles.utils")
-
 local keyset = vim.keymap.set
 
 function M.setup()
