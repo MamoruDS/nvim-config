@@ -17,6 +17,8 @@ vim.opt.smartcase = true
 
 vim.opt.termguicolors = true
 
+vim.opt.splitbelow = true
+vim.opt.splitright = true
 -- # global variables
 vim.g.notify_timeout = 5000
 
