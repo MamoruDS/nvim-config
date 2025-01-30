@@ -163,5 +163,7 @@ if vim.g.vscode then
   end)
 end
 
+require("dotfiles.keymaps.presets.buffer").setup()
+
 require("dotfiles.keymaps.presets.plugin-telescope").setup()
 require("dotfiles.keymaps.presets.plugin-fzflua").setup()
