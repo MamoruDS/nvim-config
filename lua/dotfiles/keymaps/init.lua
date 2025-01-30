@@ -139,31 +139,8 @@ keyset(
   })
 )
 
-if vim.g.vscode then
-  -- TODO:
-  opts = { silent = true }
-  local vscode = require("vscode")
-  keyset({ "v" }, "<leader>cy", function()
-    vscode.action("editor.action.clipboardCopyAction")
-  end)
-  keyset({ "n", "x" }, "<leader>tb", function()
-    vscode.action("workbench.action.toggleSidebarVisibility")
-  end)
-  keyset({ "n", "x" }, "<leader>te", function()
-    vscode.action("workbench.view.explorer")
-  end)
-  keyset({ "n", "x" }, "<leader>tm", function()
-    vscode.action("workbench.view.extensions")
-  end)
-  keyset({ "n", "x" }, "<leader>pf", function()
-    vscode.action("workbench.action.quickOpen")
-  end)
-  keyset({ "n", "x" }, "<leader>pp", function()
-    vscode.action("workbench.action.showCommands")
-  end)
-end
-
 require("dotfiles.keymaps.presets.buffer").setup()
 
-require("dotfiles.keymaps.presets.plugin-telescope").setup()
 require("dotfiles.keymaps.presets.plugin-fzflua").setup()
+require("dotfiles.keymaps.presets.plugin-telescope").setup()
+require("dotfiles.keymaps.presets.plugin-vscode").setup()
