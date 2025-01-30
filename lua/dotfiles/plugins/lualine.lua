@@ -105,7 +105,16 @@ require("lualine").setup({
         end,
         event = "BufEnter",
       },
-      "encoding",
+      {
+        function()
+          if vim.bo.fileencoding ~= "utf-8" then
+            return vim.bo.fileencoding
+          else
+            return ""
+          end
+        end,
+        event = "BufEnter",
+      },
       { "fileformat", symbols = { unix = "LF", dos = "CRLF", mac = "CR" } },
     },
     lualine_y = { "filetype" },
