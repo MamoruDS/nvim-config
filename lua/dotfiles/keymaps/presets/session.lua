@@ -8,11 +8,15 @@ function M.setup()
     if not status_ok then
       vim.cmd("mksession!")
     end
+    vim.notify("Session saved.")
   end, {
     desc = "session: save",
     silent = true,
   })
-  keyset("n", "<leader>sl", "<cmd>source Session.vim<CR>", {
+  keyset("n", "<leader>sl", function()
+    vim.cmd("source Session.vim")
+    vim.notify("Session loaded.")
+  end, {
     desc = "session: load",
     silent = true,
   })
