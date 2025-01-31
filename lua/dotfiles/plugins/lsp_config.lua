@@ -93,6 +93,13 @@ local lsp_configs = {
     setup = lspconfig.nixd.setup,
   },
 
+  prismals = {
+    config = {
+      on_attach = on_attach,
+    },
+    setup = lspconfig.prismals.setup,
+  },
+
   pyright = {
     config = {
       on_attach = on_attach,
