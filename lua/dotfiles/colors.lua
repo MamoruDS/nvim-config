@@ -66,6 +66,9 @@ function M.apply()
         hi Search       guibg=#867647
         hi VertSplit    ctermfg=8       guifg=#4f5661
     ]])
+    hl.set("NormalFloat", { bg = "#2e333b" })
+  else
+    hl.set("NormalFloat", { bg = "#f6f8fa" })
   end
 end
 
