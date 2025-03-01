@@ -18,6 +18,13 @@
     in
     {
       inherit lib;
+
+      hmModules.nvim-config =
+        { ... }:
+        {
+          imports = [ ./home-manager-module.nix ];
+          _module.args.libFns = lib;
+        };
     }
     // flake-utils.lib.eachDefaultSystem (
       system:
