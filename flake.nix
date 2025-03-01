@@ -13,31 +13,19 @@
       flake-utils,
       ...
     }:
-    flake-utils.lib.eachDefaultSystem (
+    let
+      lib = import ./lib.nix { inherit self; };
+    in
+    {
+      inherit lib;
+    }
+    // flake-utils.lib.eachDefaultSystem (
       system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
-
-        mkDotfiles =
-          {
-            local ? null,
-          }:
-          let
-            localCfg = pkgs.writeTextFile {
-              name = "options.lua";
-              text = if local == null then "-- modify config here" else local;
-            };
-          in
-          pkgs.runCommand "nvim-config" { } ''
-            mkdir -p $out/nvim/lua/local
-            cp -r ${self}/* $out/nvim/
-            cp ${localCfg} $out/nvim/lua/local/options.lua
-          '';
       in
       {
-        lib.mkDotfiles = mkDotfiles;
-
-        packages.default = mkDotfiles { };
+        packages.default = lib.mkDotfiles pkgs { };
       }
     );
 }
