@@ -15,8 +15,8 @@
       };
     in
     pkgs.runCommand "nvim-config" { } ''
-      mkdir -p $out/nvim/lua/local
-      cp -r ${self}/* $out/nvim/
-      cp ${localCfg} $out/nvim/lua/local/options.lua
+      mkdir -p $out/lua/local
+      cp -r ${self}/* $out/
+      cp ${localCfg} $out/lua/local/options.lua
     '';
 }
