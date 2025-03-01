@@ -6,6 +6,23 @@ git clone https://github.com/MamoruDS/nvim-config.git "${XDG_CONFIG_HOME:-$HOME/
 export NVIM_APPNAME=nvim-deploy nvim
 ```
 
+### Use in Home Manager
+
+Add to your inputs:
+
+```nix
+nvim-config.url = "github:MamoruDS/nvim-config";
+```
+
+Enable in your configuration:
+
+```nix
+{
+  imports = [inputs.nvim-config.hmModules.nvim-config];
+  nvim-config.enable = true;
+}
+```
+
 ## Configuration
 
 You can customize this Neovim configuration to suit your local setup.
@@ -31,4 +48,22 @@ config.lsp_clients = {
   },
 }
 
+```
+
+### Config in Home Manager
+
+```nix
+{
+  nvim-config = {
+    enable = true;
+    appName = "nvim_test"; #  use with `$NVIM_APPNAME`
+    extraConfig = ''
+      local config = require("dotfiles.config").config
+
+      config.appearances.dark_mode = false
+      config.appearances.transparent_bg = true
+      -- ...
+    '';
+  };
+}
 ```
