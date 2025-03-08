@@ -224,7 +224,8 @@ M.plugins = {
   {
     "mrcjkb/rustaceanvim",
     tags = { "default" },
-    version = "^4",
+    version = "^5",
+    lazy = false,
     ft = { "rust" },
   },
 }
