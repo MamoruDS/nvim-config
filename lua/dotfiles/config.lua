@@ -12,6 +12,7 @@ M.default_opts = {
     dark_mode = true,
     nerdfont = false,
     transparent_bg = false,
+    extra_colors = nil,
   },
   lsp_clients = {},
   misc = {
@@ -36,6 +37,7 @@ M.default_opts = {
 --- @field dark_mode? boolean
 --- @field nerdfont? boolean
 --- @field transparent_bg? boolean
+--- @field extra_colors? (fun(step: GhTheme.Spec): nil) | nil
 
 --- @class dotfiles.config.lsp_client
 --- @field setup? function

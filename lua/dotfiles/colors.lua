@@ -66,6 +66,10 @@ function M.apply()
   hl_apply_nvimtree(spec)
   hl_apply_tabline(spec)
 
+  if config.appearances.extra_colors ~= nil then
+    config.appearances.extra_colors(spec)
+  end
+
   if vim.opt.background == "dark" then
     vim.cmd([[
         hi LineNr       ctermbg=None    ctermfg=240 guifg=#5d5f61
