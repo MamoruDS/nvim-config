@@ -12,7 +12,7 @@ local bg = function(color)
   return config.appearances.transparent_bg and "none" or color
 end
 
-local hl_apply_nvimtree = function()
+local hl_apply_nvimtree = function(spec)
   if vim.opt.background == "dark" then
     vim.cmd([[
         hi NvimTreeFolderIcon   guifg=#90a4ae
@@ -33,8 +33,7 @@ local hl_apply_nvimtree = function()
   end
 end
 
-local hl_apply_tabline = function()
-  local spec = require("github-theme.spec").load(vim.g.colors_name)
+local hl_apply_tabline = function(spec)
   local p = spec.palette
 
   -- local hi_tabline_filled = {
@@ -54,8 +53,11 @@ local hl_apply_tabline = function()
 end
 
 function M.apply()
-  hl_apply_nvimtree()
-  hl_apply_tabline()
+  local style = vim.g.colors_name
+  local spec = require("github-theme.spec").load(style)
+
+  hl_apply_nvimtree(spec)
+  hl_apply_tabline(spec)
 
   if vim.opt.background == "dark" then
     vim.cmd([[
