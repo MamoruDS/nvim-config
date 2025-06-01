@@ -9,6 +9,11 @@ M.executable = function(name)
   return false
 end
 
+---@generic T1: table
+---@generic T2: table
+---@param t1 T1
+---@param t2 T2
+---@return T1|T2
 M.merge_tables = function(t1, t2)
   return vim.tbl_deep_extend("force", t1, t2)
 end
