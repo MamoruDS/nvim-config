@@ -25,12 +25,17 @@ function M.on_attach(client, bufnr)
   end
 end
 
+--- @class dotfiles.plugins.lsp_config.config
+--- @field config table
+--- @field name? string
+--- @field cond? fun(): boolean
+
+--- @type {[string]: dotfiles.plugins.lsp_config.config}
 M.lsp_configs = {
   bashls = {
     config = {
       on_attach = M.on_attach,
     },
-    setup = lspconfig.bashls.setup,
   },
 
   biome = {
@@ -38,14 +43,12 @@ M.lsp_configs = {
       on_attach = M.on_attach,
       single_file_support = true,
     },
-    setup = lspconfig.biome.setup,
   },
 
   jsonls = {
     config = {
       on_attach = M.on_attach,
     },
-    setup = lspconfig.jsonls.setup,
   },
 
   lua_ls = {
@@ -72,7 +75,6 @@ M.lsp_configs = {
       end,
       settings = { Lua = {} },
     },
-    setup = lspconfig.lua_ls.setup,
   },
 
   nixd = {
@@ -92,14 +94,12 @@ M.lsp_configs = {
         },
       },
     },
-    setup = lspconfig.nixd.setup,
   },
 
   prismals = {
     config = {
       on_attach = M.on_attach,
     },
-    setup = lspconfig.prismals.setup,
   },
 
   pyright = {
@@ -120,7 +120,6 @@ M.lsp_configs = {
         },
       },
     },
-    setup = lspconfig.pyright.setup,
   },
 
   ruff = {
@@ -130,29 +129,33 @@ M.lsp_configs = {
       },
       on_attach = M.on_attach,
     },
-    setup = lspconfig.ruff.setup,
   },
 
   taplo = {
     config = {
       on_attach = M.on_attach,
     },
-    setup = lspconfig.taplo.setup,
   },
 
   ts_ls = {
     config = {
       on_attach = M.on_attach,
     },
-    setup = lspconfig.ts_ls.setup,
   },
 }
 
 for name, client in pairs(utils.merge_tables(M.lsp_configs, config.lsp_clients)) do
-  if vim.version.lt(vim.version(), { 0, 11, 0 }) then
-    client.setup(client.config)
-  else
+  if client.cond and not client.cond() then
+    goto continue
+  end
+
+  name = client.name or name
+  if vim.version.ge(vim.version(), { 0, 11, 0 }) then
     vim.lsp.config(name, client.config)
     vim.lsp.enable(name)
+  else
+    lspconfig[name].setup(client.config)
   end
+
+  ::continue::
 end

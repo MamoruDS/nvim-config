@@ -4,7 +4,7 @@ local utils = require("dotfiles.utils")
 
 --- @class dotfiles.config.default_opts
 --- @field appearances dotfiles.config.appearances
---- @field lsp_clients {[string]: dotfiles.config.lsp_client}
+--- @field lsp_clients {[string]: dotfiles.plugins.lsp_config.config}
 --- @field misc dotfiles.config.misc
 --- @field plugins dotfiles.config.plugins
 M.default_opts = {
@@ -39,10 +39,6 @@ M.default_opts = {
 --- @field transparent_bg? boolean
 --- @field extra_colors? (fun(step: GhTheme.Spec): nil) | nil
 
---- @class dotfiles.config.lsp_client
---- @field setup? function
---- @field config? table
-
 --- @class dotfiles.config.misc.format
 --- @field enable? boolean
 --- @field policy? "after_save"|"on_save"
@@ -61,7 +57,7 @@ M.default_opts = {
 
 --- @class dotfiles.config
 --- @field appearances? dotfiles.config.appearances
---- @field lsp_clients? {[string]: dotfiles.config.lsp_client}
+--- @field lsp_clients? {[string]: dotfiles.plugins.lsp_config.config}
 --- @field misc? dotfiles.config.misc
 --- @field plugins? dotfiles.config.plugins
 M.config = {}
