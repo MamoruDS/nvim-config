@@ -148,6 +148,11 @@ M.lsp_configs = {
   },
 }
 
-  client.setup(client.config)
 for name, client in pairs(utils.merge_tables(M.lsp_configs, config.lsp_clients)) do
+  if vim.version.lt(vim.version(), { 0, 11, 0 }) then
+    client.setup(client.config)
+  else
+    vim.lsp.config(name, client.config)
+    vim.lsp.enable(name)
+  end
 end
