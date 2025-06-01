@@ -26,7 +26,7 @@ function M.on_attach(client, bufnr)
 end
 
 --- @class dotfiles.plugins.lsp_config.config
---- @field config table
+--- @field config? table
 --- @field name? string
 --- @field cond? fun(): boolean
 
@@ -151,10 +151,13 @@ for name, client in pairs(utils.merge_tables(M.lsp_configs, config.lsp_clients))
 
   name = client.name or name
   if vim.version.ge(vim.version(), { 0, 11, 0 }) then
-    vim.lsp.config(name, client.config)
+    if client.config ~= nil then
+      vim.lsp.config(name, client.config)
+    end
     vim.lsp.enable(name)
   else
-    lspconfig[name].setup(client.config)
+    config = client.config or {}
+    lspconfig[name].setup(config)
   end
 
   ::continue::
