@@ -1,9 +1,11 @@
+local M = {}
+
 local lspconfig = require("lspconfig")
 
 local config = require("dotfiles.config").config
 local utils = require("dotfiles.utils")
 
-local on_attach = function(client, bufnr)
+function M.on_attach(client, bufnr)
   if client.server_capabilities.documentHighLightProvider then
     vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
       pattern = "*",
@@ -23,17 +25,17 @@ local on_attach = function(client, bufnr)
   end
 end
 
-local lsp_configs = {
+M.lsp_configs = {
   bashls = {
     config = {
-      on_attach = on_attach,
+      on_attach = M.on_attach,
     },
     setup = lspconfig.bashls.setup,
   },
 
   biome = {
     config = {
-      on_attach = on_attach,
+      on_attach = M.on_attach,
       single_file_support = true,
     },
     setup = lspconfig.biome.setup,
@@ -41,14 +43,14 @@ local lsp_configs = {
 
   jsonls = {
     config = {
-      on_attach = on_attach,
+      on_attach = M.on_attach,
     },
     setup = lspconfig.jsonls.setup,
   },
 
   lua_ls = {
     config = {
-      on_attach = on_attach,
+      on_attach = M.on_attach,
       on_init = function(client)
         if client.workspace_folders then
           local path = client.workspace_folders[1].name
@@ -75,7 +77,7 @@ local lsp_configs = {
 
   nixd = {
     config = {
-      on_attach = on_attach,
+      on_attach = M.on_attach,
       settings = {
         nixd = {
           nixpkgs = { expr = "import <nixpkgs> { }" },
@@ -95,14 +97,14 @@ local lsp_configs = {
 
   prismals = {
     config = {
-      on_attach = on_attach,
+      on_attach = M.on_attach,
     },
     setup = lspconfig.prismals.setup,
   },
 
   pyright = {
     config = {
-      on_attach = on_attach,
+      on_attach = M.on_attach,
       settings = {
         pyright = {
           autoImportCompletion = true,
@@ -126,26 +128,26 @@ local lsp_configs = {
       init_options = {
         settings = {},
       },
-      on_attach = on_attach,
+      on_attach = M.on_attach,
     },
     setup = lspconfig.ruff.setup,
   },
 
   taplo = {
     config = {
-      on_attach = on_attach,
+      on_attach = M.on_attach,
     },
     setup = lspconfig.taplo.setup,
   },
 
   ts_ls = {
     config = {
-      on_attach = on_attach,
+      on_attach = M.on_attach,
     },
     setup = lspconfig.ts_ls.setup,
   },
 }
 
-for name, client in pairs(utils.merge_tables(lsp_configs, config.lsp_clients)) do
   client.setup(client.config)
+for name, client in pairs(utils.merge_tables(M.lsp_configs, config.lsp_clients)) do
 end
