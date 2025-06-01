@@ -102,6 +102,12 @@ M.lsp_configs = {
     },
   },
 
+  pyrefly = {
+    config = {
+      cmd = { "uvx", "pyrefly", "lsp" },
+    },
+  },
+
   pyright = {
     config = {
       on_attach = M.on_attach,
