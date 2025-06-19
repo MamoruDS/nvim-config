@@ -110,7 +110,12 @@ M.lsp_configs = {
 
   pyright = {
     config = {
-      on_attach = M.on_attach,
+      on_attach = function(client, bufnr)
+        if #vim.lsp.get_clients({ name = "pyrefly", bufnr = bufnr }) ~= 0 then
+          client.server_capabilities.definitionProvider = false
+        end
+        M.on_attach(client, bufnr)
+      end,
       settings = {
         pyright = {
           autoImportCompletion = true,
