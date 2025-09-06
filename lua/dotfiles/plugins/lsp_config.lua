@@ -148,6 +148,16 @@ M.lsp_configs = {
     },
   },
 
+  tinymist = {
+    config = {
+      cmd = { "tinymist" },
+      filetypes = { "typst" },
+      settings = {
+        formatterMode = "typstyle",
+      },
+    },
+  },
+
   ts_ls = {
     config = {
       on_attach = M.on_attach,
