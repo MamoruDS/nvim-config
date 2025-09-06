@@ -17,6 +17,22 @@ if vim.fn.exists(":ConformInfo") ~= 0 then
   keyset("n", "<leader>tc", "<cmd>ConformInfo<CR>", opts)
 end
 
+keyset(
+  "n",
+  "<leader>ghp",
+  "<cmd>Gitsigns preview_hunk_inline<CR>",
+  utils.merge_tables(opts, { desc = "gitsigns: preview hunk" })
+)
+keyset("n", "<leader>ghs", "<cmd>Gitsigns stage_hunk<CR>", utils.merge_tables(opts, { desc = "gitsigns: stage hunk" }))
+keyset("n", "<leader>glb", "<cmd>Gitsigns blame_line<CR>", utils.merge_tables(opts, { desc = "gitsigns: blame line" }))
+keyset("n", "<leader>gtb", "<cmd>Gitsigns blame<CR>", utils.merge_tables(opts, { desc = "gitsigns: blame" }))
+keyset(
+  "n",
+  "<leader>gtc",
+  "<cmd>Gitsigns show_commit<CR>",
+  utils.merge_tables(opts, { desc = "gitsigns: show_commit" })
+)
+
 if vim.fn.exists(":NvimTreeToggle") ~= 0 then
   opts = { silent = true }
   keyset("n", "<leader>te", "<cmd>NvimTreeToggle<CR>", opts)
