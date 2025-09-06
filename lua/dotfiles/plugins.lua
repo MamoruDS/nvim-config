@@ -196,6 +196,14 @@ M.plugins = {
     end,
   },
 
+  {
+    "chomosuke/typst-preview.nvim",
+    tags = { "default" },
+    ft = "typst",
+    version = "1.*",
+    opts = {},
+  },
+
   -- lsp
 
   {
