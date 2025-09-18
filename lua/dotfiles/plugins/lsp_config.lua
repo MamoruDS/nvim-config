@@ -5,25 +5,6 @@ local lspconfig = require("lspconfig")
 local config = require("dotfiles.config").config
 local utils = require("dotfiles.utils")
 
-function M.on_attach(client, bufnr)
-  if client.server_capabilities.documentHighLightProvider then
-    vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-      pattern = "*",
-      buffer = bufnr,
-      callback = function()
-        vim.lsp.buf.document_highlight()
-      end,
-    })
-
-    vim.api.nvim_create_autocmd("CursorMoved", {
-      pattern = "*",
-      buffer = bufnr,
-      callback = function()
-        vim.lsp.buf.clear_references()
-      end,
-    })
-  end
-end
 
 --- @class dotfiles.plugins.lsp_config.config
 --- @field config? table
@@ -32,28 +13,18 @@ end
 
 --- @type {[string]: dotfiles.plugins.lsp_config.config}
 M.lsp_configs = {
-  bashls = {
-    config = {
-      on_attach = M.on_attach,
-    },
-  },
+  bashls = {},
 
   biome = {
     config = {
-      on_attach = M.on_attach,
       single_file_support = true,
     },
   },
 
-  jsonls = {
-    config = {
-      on_attach = M.on_attach,
-    },
-  },
+  jsonls = {},
 
   lua_ls = {
     config = {
-      on_attach = M.on_attach,
       on_init = function(client)
         if client.workspace_folders then
           local path = client.workspace_folders[1].name
@@ -79,7 +50,6 @@ M.lsp_configs = {
 
   nixd = {
     config = {
-      on_attach = M.on_attach,
       settings = {
         nixd = {
           nixpkgs = { expr = "import <nixpkgs> { }" },
@@ -96,11 +66,7 @@ M.lsp_configs = {
     },
   },
 
-  prismals = {
-    config = {
-      on_attach = M.on_attach,
-    },
-  },
+  prismals = {},
 
   pyrefly = {
     config = {
@@ -114,7 +80,6 @@ M.lsp_configs = {
         if #vim.lsp.get_clients({ name = "pyrefly", bufnr = bufnr }) ~= 0 then
           client.server_capabilities.definitionProvider = false
         end
-        M.on_attach(client, bufnr)
       end,
       settings = {
         pyright = {
@@ -138,15 +103,10 @@ M.lsp_configs = {
       init_options = {
         settings = {},
       },
-      on_attach = M.on_attach,
     },
   },
 
-  taplo = {
-    config = {
-      on_attach = M.on_attach,
-    },
-  },
+  taplo = {},
 
   tinymist = {
     config = {
@@ -158,11 +118,7 @@ M.lsp_configs = {
     },
   },
 
-  ts_ls = {
-    config = {
-      on_attach = M.on_attach,
-    },
-  },
+  ts_ls = {},
 }
 
 for name, client in pairs(utils.merge_tables(M.lsp_configs, config.lsp_clients)) do
