@@ -106,6 +106,8 @@ M.lsp_configs = {
     },
   },
 
+  svelte = {},
+
   taplo = {},
 
   tinymist = {
@@ -119,6 +121,12 @@ M.lsp_configs = {
   },
 
   ts_ls = {},
+
+  ty = {
+    config = {
+      cmd = { "uvx", "ty", "server" },
+    },
+  },
 }
 
 for name, client in pairs(utils.merge_tables(M.lsp_configs, config.lsp_clients)) do
