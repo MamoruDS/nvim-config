@@ -103,7 +103,13 @@ M.lsp_configs = {
       init_options = {
         settings = {},
       },
+      on_attach = function(client, _)
+        client.server_capabilities.hoverProvider = false
+      end,
     },
+    cond = function()
+      return false
+    end,
   },
 
   svelte = {},
