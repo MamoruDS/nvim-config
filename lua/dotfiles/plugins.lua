@@ -9,7 +9,7 @@ M.plugins = {
     tags = { "default", "utils" },
     event = "BufEnter",
     config = function()
-      utils.require("plugins.comment")
+      require("dotfiles.plugins.comment")
     end,
   },
 
@@ -20,7 +20,7 @@ M.plugins = {
     lazy = false,
     priority = 1000,
     config = function()
-      utils.require("plugins.nvim-notify")
+      require("dotfiles.plugins.nvim-notify")
     end,
   },
 
@@ -33,7 +33,7 @@ M.plugins = {
       -- "rcarriga/nvim-notify",
     },
     config = function()
-      utils.require("plugins.noice")
+      require("dotfiles.plugins.noice")
     end,
   },
 
@@ -43,7 +43,7 @@ M.plugins = {
     lazy = false,
     priority = 100,
     config = function()
-      utils.require("plugins.github-theme")
+      require("dotfiles.plugins.github-theme")
     end,
   },
 
@@ -52,7 +52,7 @@ M.plugins = {
     tags = { "default", "no-vscode", "tui" },
     event = "BufEnter",
     config = function()
-      utils.require("plugins.lualine")
+      require("dotfiles.plugins.lualine")
     end,
   },
 
@@ -70,7 +70,7 @@ M.plugins = {
       return vim.wo.diff ~= true
     end,
     config = function()
-      utils.require("plugins.gitsigns")
+      require("dotfiles.plugins.gitsigns")
     end,
   },
 
@@ -81,7 +81,7 @@ M.plugins = {
       return config.appearances.nerdfont
     end,
     config = function()
-      utils.require("plugins.nvim-web-devicons")
+      require("dotfiles.plugins.nvim-web-devicons")
     end,
   },
 
@@ -90,7 +90,7 @@ M.plugins = {
     tags = { "default", "no-vscode", "tui" },
     cmd = { "NvimTreeToggle", "NvimTreeOpen" },
     config = function()
-      utils.require("plugins.nvim-tree")
+      require("dotfiles.plugins.nvim-tree")
     end,
   },
 
@@ -99,7 +99,7 @@ M.plugins = {
     tags = { "default", "no-vscode", "tui" },
     event = "BufEnter",
     config = function()
-      utils.require("plugins.indent_blankline")
+      require("dotfiles.plugins.indent_blankline")
     end,
   },
 
@@ -108,7 +108,7 @@ M.plugins = {
     tags = { "default", "utils" },
     branch = "main",
     config = function()
-      utils.require("plugins.oscyank")
+      require("dotfiles.plugins.oscyank")
     end,
   },
 
@@ -120,7 +120,7 @@ M.plugins = {
       ts_update()
     end,
     config = function()
-      utils.require("plugins.nvim-treesitter")
+      require("dotfiles.plugins.nvim-treesitter")
     end,
   },
 
@@ -133,7 +133,7 @@ M.plugins = {
       vim.o.timeoutlen = 300
     end,
     config = function()
-      utils.require("plugins.which-key")
+      require("dotfiles.plugins.which-key")
     end,
   },
 
@@ -142,7 +142,7 @@ M.plugins = {
     tags = { "default", "no-vscode", "tui" },
     enabled = config.plugins.fuzzy_finder == "fzf-lua",
     config = function()
-      utils.require("plugins.fzf-lua")
+      require("dotfiles.plugins.fzf-lua")
     end,
   },
 
@@ -158,7 +158,7 @@ M.plugins = {
     tags = { "default", "lsp", "no-vscode" },
     event = "BufEnter",
     config = function()
-      utils.require("plugins.conform")
+      require("dotfiles.plugins.conform")
     end,
   },
 
@@ -169,7 +169,7 @@ M.plugins = {
     dependencies = { "nvim-lua/plenary.nvim" },
     enabled = config.plugins.fuzzy_finder == "telescope",
     config = function()
-      utils.require("plugins.telescope")
+      require("dotfiles.plugins.telescope")
     end,
   },
 
@@ -182,7 +182,7 @@ M.plugins = {
     "tpope/vim-fugitive",
     tags = { "default" },
     config = function()
-      utils.require("plugins.fugitive")
+      require("dotfiles.plugins.fugitive")
     end,
   },
 
@@ -192,7 +192,7 @@ M.plugins = {
     event = "VimEnter",
     dependencies = "nvim-tree/nvim-web-devicons",
     config = function()
-      utils.require("plugins.tabby")
+      require("dotfiles.plugins.tabby")
     end,
   },
 
@@ -210,7 +210,7 @@ M.plugins = {
     "neovim/nvim-lspconfig",
     tags = { "default", "lsp", "no-vscode" },
     config = function()
-      utils.require("plugins.lsp_config")
+      require("dotfiles.plugins.lsp_config")
     end,
   },
 
@@ -225,7 +225,7 @@ M.plugins = {
       "L3MON4D3/LuaSnip",
     },
     config = function()
-      utils.require("plugins.nvim-cmp")
+      require("dotfiles.plugins.nvim-cmp")
     end,
   },
 

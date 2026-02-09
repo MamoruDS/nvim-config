@@ -64,6 +64,10 @@ M.config = {}
 
 function M.setup(opts)
   M.config = utils.merge_tables(M.default_opts, opts)
+  local status, local_config = pcall(require, "local.config")
+  if status then
+    M.config = utils.merge_tables(M.config, local_config)
+  end
 end
 
 vim.api.nvim_create_user_command("DotCfgToggleFormat", function()

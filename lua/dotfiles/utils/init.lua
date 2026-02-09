@@ -1,6 +1,5 @@
 local M = {}
 
-M.require = require("dotfiles.utils.require")
 
 M.executable = function(name)
   if vim.fn.executable(name) > 0 then

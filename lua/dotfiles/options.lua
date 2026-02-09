@@ -1,5 +1,3 @@
-local config = require("dotfiles.config").config
-
 vim.opt.number = false
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
