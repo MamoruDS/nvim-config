@@ -5,7 +5,6 @@ local lspconfig = require("lspconfig")
 local config = require("dotfiles.config").config
 local utils = require("dotfiles.utils")
 
-
 --- @class dotfiles.plugins.lsp_config.config
 --- @field config? table
 --- @field name? string

@@ -1,6 +1,5 @@
 local M = {}
 
-
 M.executable = function(name)
   if vim.fn.executable(name) > 0 then
     return true
