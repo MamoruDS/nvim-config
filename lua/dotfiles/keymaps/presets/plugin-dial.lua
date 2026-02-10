@@ -3,8 +3,8 @@ local M = {}
 local keyset = vim.keymap.set
 
 function M.setup()
-  if vim.fn.exists(":DialIncrement") ~= 0 then
-    local dial = require("dial.map")
+  local ok, dial = pcall(require, "dial.map")
+  if ok then
     keyset({ "n", "v" }, "<C-a>", function()
       dial.manipulate("increment", "normal")
     end)
