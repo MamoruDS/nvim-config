@@ -60,6 +60,9 @@ M.plugins = {
     "monaqa/dial.nvim",
     tags = { "default", "utils" },
     event = "VeryLazy",
+    config = function()
+      require("dotfiles.plugins.dial")
+    end,
   },
 
   ["lewis6991/gitsigns.nvim"] = {
