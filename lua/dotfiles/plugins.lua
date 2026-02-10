@@ -115,10 +115,7 @@ M.plugins = {
   ["nvim-treesitter/nvim-treesitter"] = {
     "nvim-treesitter/nvim-treesitter",
     tags = { "default", "no-native" },
-    build = function()
-      local ts_update = require("nvim-treesitter.install").update({ with_sync = true })
-      ts_update()
-    end,
+    build = ":TSUpdate",
     config = function()
       require("dotfiles.plugins.nvim-treesitter")
     end,
