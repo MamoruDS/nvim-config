@@ -146,6 +146,16 @@ M.plugins = {
     end,
   },
 
+  ["NStefan002/screenkey.nvim"] = {
+    "NStefan002/screenkey.nvim",
+    tags = { "default", "no-vscode", "tui" },
+    lazy = false,
+    branch = "main",
+    opts = {
+      clear_after = 3600,
+    },
+  },
+
   ["L3MON4D3/LuaSnip"] = {
     "L3MON4D3/LuaSnip",
     tags = { "default", "utils" },
