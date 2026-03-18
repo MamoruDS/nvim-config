@@ -1,3 +1,5 @@
+# nvim-config
+
 ## Deploy
 
 ```shell
@@ -18,10 +20,33 @@ Enable in your configuration:
 
 ```nix
 {
-  imports = [inputs.nvim-config.hmModules.nvim-config];
+  imports = [inputs.nvim-config.homeManagerModules.default];
   nvim-config.enable = true;
 }
 ```
+
+### Use in NixOS
+
+Add to your inputs:
+
+```nix
+nvim-config.url = "github:MamoruDS/nvim-config";
+```
+
+Enable in your NixOS configuration:
+
+```nix
+{
+  imports = [inputs.nvim-config.nixosModules.default];
+  nvim-config = {
+    enable = true;
+    appName = "nvim_os";
+    setDefaultAppName = true;
+  };
+}
+```
+
+On interactive shell login, sets `NVIM_APPNAME=nvim_os` and symlinks the config into each user's `~/.config/nvim_os/`. The symlink is refreshed automatically after NixOS rebuilds. Users can override by unsetting `NVIM_APPNAME` or removing the link.
 
 ## Configuration
 
