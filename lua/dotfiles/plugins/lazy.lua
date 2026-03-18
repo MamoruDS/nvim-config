@@ -28,6 +28,7 @@ end
 function M.setup(spec)
   require("lazy").setup({
     spec = spec,
+    lockfile = vim.fn.stdpath("data") .. "/lazy-lock.json",
   })
 end
 
