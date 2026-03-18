@@ -214,6 +214,25 @@ M.plugins = {
     opts = {},
   },
 
+  ["NStefan002/screenkey.nvim"] = {
+    "NStefan002/screenkey.nvim",
+    tags = { "default", "no-vscode", "tui" },
+    lazy = false,
+    branch = "main",
+    opts = {
+      clear_after = 3600,
+    },
+  },
+
+  ["folke/zen-mode.nvim"] = {
+    "folke/zen-mode.nvim",
+    tags = { "default", "no-vscode", "tui" },
+    cmd = "ZenMode",
+    config = function()
+      require("zen-mode").setup({})
+    end,
+  },
+
   -- lsp
 
   ["neovim/nvim-lspconfig"] = {
