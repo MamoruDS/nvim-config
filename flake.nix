@@ -25,6 +25,13 @@
           imports = [ ./modules/home-manager.nix ];
           _module.args.libFns = lib;
         };
+
+      nixosModules.default =
+        { ... }:
+        {
+          imports = [ ./modules/nixos.nix ];
+          _module.args.libFns = lib;
+        };
     }
     // flake-utils.lib.eachDefaultSystem (
       system:
