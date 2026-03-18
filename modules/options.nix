@@ -1,15 +1,6 @@
-{
-  config,
-  lib,
-  libFns,
-  pkgs,
-  ...
-}:
+{ lib, ... }:
 
 with lib;
-let
-  cfg = config.nvim-config;
-in
 {
   options.nvim-config = {
     enable = mkEnableOption "deploy nvim-config dotfiles";
@@ -17,6 +8,7 @@ in
     appName = mkOption {
       type = types.str;
       default = "nvim";
+      description = "Name used for $NVIM_APPNAME and the config directory name.";
     };
 
     extraConfig = mkOption {
@@ -26,19 +18,8 @@ in
       '';
       description = ''
         Extra configuration lua lines to add to
-        {file}`$XDG_CONFIG_HOME/$APPNAME/lua/local/options.lua`.
+        {file}`lua/local/options.lua`.
       '';
-    };
-  };
-
-  config = {
-    home = mkIf cfg.enable {
-      file = {
-        "${config.xdg.configHome}/${cfg.appName}" = {
-          source = libFns.mkDotfiles pkgs { local = cfg.extraConfig; };
-          recursive = true;
-        };
-      };
     };
   };
 }
