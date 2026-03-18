@@ -175,7 +175,7 @@ M.plugins = {
   ["nvim-telescope/telescope.nvim"] = {
     "nvim-telescope/telescope.nvim",
     tags = { "default", "no-vscode", "tui" },
-    branch = "0.1.x",
+    version = "*",
     dependencies = { "nvim-lua/plenary.nvim" },
     enabled = config.plugins.fuzzy_finder == "telescope",
     config = function()
